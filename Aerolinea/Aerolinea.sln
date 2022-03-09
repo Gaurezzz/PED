@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32210.238
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aerolinea", "Aerolinea.csproj", "{1E127BAB-4B60-408D-BA8B-A3D20C4D41DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aerolinea", "Aerolinea\Aerolinea.csproj", "{42E12309-DF87-411F-91C6-003071CD241F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E127BAB-4B60-408D-BA8B-A3D20C4D41DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E127BAB-4B60-408D-BA8B-A3D20C4D41DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E127BAB-4B60-408D-BA8B-A3D20C4D41DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E127BAB-4B60-408D-BA8B-A3D20C4D41DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E12309-DF87-411F-91C6-003071CD241F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E12309-DF87-411F-91C6-003071CD241F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E12309-DF87-411F-91C6-003071CD241F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E12309-DF87-411F-91C6-003071CD241F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0F630D68-FCC8-443B-A316-5AD2E66DF141}
 	EndGlobalSection
 EndGlobal
