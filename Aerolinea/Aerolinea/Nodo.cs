@@ -13,7 +13,6 @@ namespace Aerolinea
         private int posX, posY;
         private string color;
         private int tamaño, grosor, peso;
-        private bool dirigido;
         private Nodo anterior;
         private Nodo vertice_antecesor;
         private Nodo vertice_adyacente;
@@ -71,11 +70,7 @@ namespace Aerolinea
             get { return peso; }
             set { peso = value; }
         }
-        public bool Dirigido 
-        {
-            get { return dirigido; }
-            set { dirigido = value; } 
-        }
+        
         public Nodo Anterior 
         {
             get { return anterior; }

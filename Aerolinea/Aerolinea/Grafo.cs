@@ -209,6 +209,75 @@ namespace Aerolinea
         }
 
         //Metodo para eliminar un vertice por su nombre
+        public void EliminarVertice(Nodo v)
+        {
+            Nodo Actual = new Nodo();
+            Nodo anterior = new Nodo();
+            anterior = null;
+            Actual = V_inicial;
+            bool encontrado = false;
+            while (Actual != null && encontrado == false)
+            {
+                if (Actual.Nombre == v.Nombre)
+                {
+                    if (Actual == V_inicial)
+                    {
+                        V_inicial = V_inicial.Siguiente;
+                    }
+                    else if (Actual == V_final)
+                    {
+                        anterior.Siguiente = null;
+                        V_final = anterior;
+                    }
+                    else
+                    {
+                        anterior.Siguiente = Actual.Siguiente;
+                        Actual.Siguiente.Anterior = anterior;
+                    }
+                    encontrado = true;
+                }
+                anterior = Actual;
+                Actual = Actual.Siguiente;
+            }
+            if (encontrado == true)
+                Nv--;
+        }
+
+        //Metodo para eliminar una arista dado su nombre
+        public void EliminarArista(Nodo a)
+        {
+            Nodo Actual = new Nodo();
+            Nodo anterior = new Nodo();
+            anterior = null;
+            Actual = A_inicial;
+            bool encontrado = false;
+            while (Actual != null && encontrado == false)
+            {
+                if (Actual.Nombre == a.Nombre)
+                {
+                    if (Actual == A_inicial)
+                    {
+                        A_inicial = A_inicial.Siguiente;
+                    }
+                    else if (Actual == A_final)
+                    {
+                        anterior.Siguiente = null;
+                        A_final = anterior;
+                    }
+                    else
+                    {
+                        anterior.Siguiente = Actual.Siguiente;
+                        Actual.Siguiente.Anterior = anterior;
+                    }
+                    encontrado = true;
+                }
+                anterior = Actual;
+                Actual = Actual.Siguiente;
+                if (encontrado == true)
+                    Na--;
+            }
+        }
+
        
         //Metodo que comprueba que exista una arista
         public bool ExisteA(Nodo a)
@@ -229,5 +298,201 @@ namespace Aerolinea
             else
                 return false;
         }
+
+        //Metodo que comprueba que hay arista y vertices
+        public Nodo ExistaArista_Vertices(Nodo ant, Nodo ady)
+        {
+            string[] buscados = ObtenerAristas();
+            for (int i = 0; i < Na; i++)
+            {
+                Nodo actual = LocalizaArista(buscados[i]);
+                if (ant.Nombre == actual.VerticeAntecesor.Nombre && ady.Nombre == actual.VerticeAdyacente.Nombre)
+                    return actual;
+                else if (ady.Nombre == actual.VerticeAntecesor.Nombre && ant.Nombre == actual.VerticeAdyacente.Nombre)
+                    return actual;
+            }
+            return null;
+        }
+
+        //Metodo para mostrar vertices
+        public void MostrarV(ListBox lbxComponentes)
+        {
+            if (hayVertices() == true)
+            {
+                lbxComponentes.Items.Clear();
+                Nodo q = V_inicial;
+                lbxComponentes.Items.Add("VERTICES:");
+                while (q != null)
+                {
+                    lbxComponentes.Items.Add("*Vertice: " + q.Nombre + "\t Pos(x): " + q.PosX + "\t Pos(y): " + q.PosY);
+                    q = q.Siguiente;
+                }
+            }
+        }
+
+        //Metodo para mostrar aristas
+        public void MostrarA(ListBox lbxComponentes)
+        {
+            if (hayAristas() == true)
+            {
+                lbxComponentes.Items.Clear();
+                Nodo q = A_inicial;
+                lbxComponentes.Items.Add("ARISTAS:");
+                while (q != null)
+                {
+                    lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
+                    q = q.Siguiente;
+                }
+            }
+        }
+
+        //Metodo que devuelve todos los nombres de los vertices
+        public string[] ObtenerVertices()
+        {
+            string[] NombresV = new string[Nv];
+            Nodo Actual = V_inicial;
+            for (int i = 0; i < Nv; i++)
+            {
+                NombresV[i] = Actual.Nombre;
+                Actual = Actual.Siguiente;
+            }
+            return NombresV;
+        }
+
+        //Metodo que devuelve todos los nombres de las aristas
+        public string[] ObtenerAristas()
+        {
+            string[] NombresA = new string[Na];
+            Nodo Actual = A_inicial;
+            for (int i = 0; i < Na; i++)
+            {
+                NombresA[i] = Actual.Nombre;
+                Actual = Actual.Siguiente;
+            }
+            return NombresA;
+        }
+
+        //Metodo que retorna la posicion dado el nombre de vertice
+        public int PosVertice(string nombre)
+        {
+            int n = 0;
+            Nodo Act = V_inicial;
+            while (Act != null)
+            {
+                if (Act.Nombre.Equals(nombre))
+                    return n;
+                Act = Act.Siguiente;
+                n++;
+            }
+            return -1;
+        }
+
+        //Metodo que retorna el vertice dada una posicion
+        public Nodo VerticePorPos(int n)
+        {
+            int contador = 0;
+            Nodo Act = V_inicial;
+            while (contador != n)
+            {
+                Act = Act.Siguiente;
+                contador++;
+            }
+            return Act;
+        }
+
+        //Metodo para el algoritmo de DIJKSTRA
+        public void A_Dijkstra(string A, string B, ListBox L, TextBox T)
+        {
+            int inicio = PosVertice(A);
+            int final = PosVertice(B);
+            int distancia = 0;
+            int n = 0;
+            int cantNodos = Nv;
+            int actual = 0;
+            int columna = 0;
+
+            //Se crea la tabla
+            //Visitado-->0
+            //Distancia-->1
+            //Previo-->2
+            int[,] tabla = new int[cantNodos, 3];
+
+            //Inicializando la tabla
+            for (n = 0; n < cantNodos; n++)
+            {
+                tabla[n, 0] = 0;
+                tabla[n, 1] = int.MaxValue;
+                tabla[n, 2] = 0;
+            }
+            tabla[inicio, 1] = 0;
+
+            //Iniciando Dijkstra
+            actual = inicio;
+
+            do
+            {
+                //Marcar nodo como visitado
+                tabla[actual, 0] = 1;
+                for (columna = 0; columna < cantNodos; columna++)
+                {
+
+                    //Buscamos a quien se dirige
+                    if (ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna)) != null)
+                    {
+                        //Calculamos la distancia
+                        distancia = ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna)).Peso + tabla[actual, 1];
+
+                        //Colocamos las distancias
+                        if (distancia < tabla[columna, 1])
+                        {
+                            tabla[columna, 1] = distancia;
+
+                            //Colocamos la informacion del padre(previo)
+                            tabla[columna, 2] = actual;
+                        }
+                    }
+                }
+                //El nuevo actual es el nodo con la menor distancia que no ha sido visitado
+                int indiceMenor = -1;
+                int distanciaMenor = int.MaxValue;
+
+                for (int x = 0; x < cantNodos; x++)
+                {
+                    if (tabla[x, 1] < distanciaMenor && tabla[x, 0] == 0)
+                    {
+                        indiceMenor = x;
+                        distanciaMenor = tabla[x, 1];
+                    }
+                }
+                actual = indiceMenor;
+            } while (actual != -1);
+
+            //Obtenemos la ruta
+            List<int> ruta = new List<int>();
+            int nodo = final;
+            while (nodo != inicio)
+            {
+                ruta.Add(nodo);
+                nodo = tabla[nodo, 2];
+            }
+            ruta.Add(inicio);
+            ruta.Reverse();
+
+            int sumaDistancias = tabla[ruta.ElementAt(ruta.Count() - 1), 1];
+            if (sumaDistancias == 0 || sumaDistancias == int.MaxValue)
+            {
+                L.Items.Add("No existe una ruta disponible");
+            }
+            else
+            {
+                foreach (int posicion in ruta)
+                {
+                    L.Items.Add("{" + VerticePorPos(posicion).Nombre + "}");
+                    L.Items.Add("  ↓↓  ");
+                }
+                T.Text = Convert.ToString(sumaDistancias);
+            }
+        }
+
     }
 }
