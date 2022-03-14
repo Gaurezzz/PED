@@ -39,7 +39,17 @@
             this.pctPais = new System.Windows.Forms.PictureBox();
             this.pctAgregar = new System.Windows.Forms.PictureBox();
             this.pctLogo1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlInicio = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlPais = new System.Windows.Forms.Panel();
+            this.pnlVueloDirecto = new System.Windows.Forms.Panel();
+            this.pnlCrear = new System.Windows.Forms.Panel();
+            this.pnlRegistro = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
@@ -51,6 +61,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo1)).BeginInit();
+            this.pnlInicio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlPais.SuspendLayout();
+            this.pnlVueloDirecto.SuspendLayout();
+            this.pnlCrear.SuspendLayout();
+            this.pnlRegistro.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBarra
@@ -62,26 +78,39 @@
             this.pnlBarra.Name = "pnlBarra";
             this.pnlBarra.Size = new System.Drawing.Size(1000, 43);
             this.pnlBarra.TabIndex = 0;
+            this.pnlBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBarra_MouseDown);
+            this.pnlBarra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlBarra_MouseMove);
+            this.pnlBarra.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlBarra_MouseUp);
             // 
             // pctMin
             // 
-            this.pctMin.Image = global::Aerolinea.Properties.Resources._2;
-            this.pctMin.Location = new System.Drawing.Point(908, 0);
+            this.pctMin.Image = global::Aerolinea.Properties.Resources.min1;
+            this.pctMin.Location = new System.Drawing.Point(915, 0);
             this.pctMin.Name = "pctMin";
-            this.pctMin.Size = new System.Drawing.Size(43, 43);
+            this.pctMin.Size = new System.Drawing.Size(41, 43);
             this.pctMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctMin.TabIndex = 2;
             this.pctMin.TabStop = false;
+            this.pctMin.Click += new System.EventHandler(this.pctMin_Click);
+            this.pctMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctMin_MouseDown);
+            this.pctMin.MouseEnter += new System.EventHandler(this.pctMin_MouseEnter);
+            this.pctMin.MouseLeave += new System.EventHandler(this.pctMin_MouseLeave);
+            this.pctMin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctMin_MouseUp);
             // 
             // pctCerrar
             // 
-            this.pctCerrar.Image = global::Aerolinea.Properties.Resources._1;
+            this.pctCerrar.Image = global::Aerolinea.Properties.Resources.close1;
             this.pctCerrar.Location = new System.Drawing.Point(957, 0);
             this.pctCerrar.Name = "pctCerrar";
             this.pctCerrar.Size = new System.Drawing.Size(43, 43);
             this.pctCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctCerrar.TabIndex = 1;
             this.pctCerrar.TabStop = false;
+            this.pctCerrar.Click += new System.EventHandler(this.pctCerrar_Click);
+            this.pctCerrar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctCerrar_MouseDown);
+            this.pctCerrar.MouseEnter += new System.EventHandler(this.pctCerrar_MouseEnter);
+            this.pctCerrar.MouseLeave += new System.EventHandler(this.pctCerrar_MouseLeave);
+            this.pctCerrar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctCerrar_MouseUp);
             // 
             // pnlMenu
             // 
@@ -100,27 +129,37 @@
             // 
             // pctRegistro
             // 
-            this.pctRegistro.Image = global::Aerolinea.Properties.Resources._6;
+            this.pctRegistro.Image = global::Aerolinea.Properties.Resources.registro1;
             this.pctRegistro.Location = new System.Drawing.Point(0, 409);
             this.pctRegistro.Name = "pctRegistro";
             this.pctRegistro.Size = new System.Drawing.Size(251, 45);
             this.pctRegistro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctRegistro.TabIndex = 7;
             this.pctRegistro.TabStop = false;
+            this.pctRegistro.Click += new System.EventHandler(this.pctRegistro_Click);
+            this.pctRegistro.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctRegistro_MouseDown);
+            this.pctRegistro.MouseEnter += new System.EventHandler(this.pctRegistro_MouseEnter);
+            this.pctRegistro.MouseLeave += new System.EventHandler(this.pctRegistro_MouseLeave);
+            this.pctRegistro.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctRegistro_MouseUp);
             // 
             // pctCrear
             // 
-            this.pctCrear.Image = global::Aerolinea.Properties.Resources._5;
+            this.pctCrear.Image = global::Aerolinea.Properties.Resources.crear1;
             this.pctCrear.Location = new System.Drawing.Point(0, 358);
             this.pctCrear.Name = "pctCrear";
             this.pctCrear.Size = new System.Drawing.Size(251, 45);
             this.pctCrear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctCrear.TabIndex = 6;
             this.pctCrear.TabStop = false;
+            this.pctCrear.Click += new System.EventHandler(this.pctCrear_Click);
+            this.pctCrear.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctCrear_MouseDown);
+            this.pctCrear.MouseEnter += new System.EventHandler(this.pctCrear_MouseEnter);
+            this.pctCrear.MouseLeave += new System.EventHandler(this.pctCrear_MouseLeave);
+            this.pctCrear.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctCrear_MouseUp);
             // 
             // pctRutas
             // 
-            this.pctRutas.Image = global::Aerolinea.Properties.Resources._4;
+            this.pctRutas.Image = global::Aerolinea.Properties.Resources.rutas1;
             this.pctRutas.Location = new System.Drawing.Point(0, 307);
             this.pctRutas.Name = "pctRutas";
             this.pctRutas.Size = new System.Drawing.Size(251, 45);
@@ -130,27 +169,37 @@
             // 
             // pctVueloDirecto
             // 
-            this.pctVueloDirecto.Image = global::Aerolinea.Properties.Resources._3;
+            this.pctVueloDirecto.Image = global::Aerolinea.Properties.Resources.vuelo1;
             this.pctVueloDirecto.Location = new System.Drawing.Point(0, 256);
             this.pctVueloDirecto.Name = "pctVueloDirecto";
             this.pctVueloDirecto.Size = new System.Drawing.Size(251, 45);
             this.pctVueloDirecto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctVueloDirecto.TabIndex = 4;
             this.pctVueloDirecto.TabStop = false;
+            this.pctVueloDirecto.Click += new System.EventHandler(this.pctVueloDirecto_Click);
+            this.pctVueloDirecto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctVueloDirecto_MouseDown);
+            this.pctVueloDirecto.MouseEnter += new System.EventHandler(this.pctVueloDirecto_MouseEnter);
+            this.pctVueloDirecto.MouseLeave += new System.EventHandler(this.pctVueloDirecto_MouseLeave);
+            this.pctVueloDirecto.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctVueloDirecto_MouseUp);
             // 
             // pctPais
             // 
-            this.pctPais.Image = global::Aerolinea.Properties.Resources._21;
+            this.pctPais.Image = global::Aerolinea.Properties.Resources.pais1;
             this.pctPais.Location = new System.Drawing.Point(0, 205);
             this.pctPais.Name = "pctPais";
             this.pctPais.Size = new System.Drawing.Size(251, 45);
             this.pctPais.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctPais.TabIndex = 3;
             this.pctPais.TabStop = false;
+            this.pctPais.Click += new System.EventHandler(this.pctPais_Click);
+            this.pctPais.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctPais_MouseDown);
+            this.pctPais.MouseEnter += new System.EventHandler(this.pctPais_MouseEnter);
+            this.pctPais.MouseLeave += new System.EventHandler(this.pctPais_MouseLeave);
+            this.pctPais.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctPais_MouseUp);
             // 
             // pctAgregar
             // 
-            this.pctAgregar.Image = global::Aerolinea.Properties.Resources._11;
+            this.pctAgregar.Image = global::Aerolinea.Properties.Resources.agregar1;
             this.pctAgregar.Location = new System.Drawing.Point(0, 154);
             this.pctAgregar.Name = "pctAgregar";
             this.pctAgregar.Size = new System.Drawing.Size(251, 45);
@@ -169,20 +218,118 @@
             this.pctLogo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctLogo1.TabIndex = 0;
             this.pctLogo1.TabStop = false;
+            this.pctLogo1.Click += new System.EventHandler(this.pctLogo1_Click);
             // 
-            // panel1
+            // pnlInicio
             // 
-            this.panel1.Location = new System.Drawing.Point(271, 84);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 8;
+            this.pnlInicio.Controls.Add(this.label1);
+            this.pnlInicio.Controls.Add(this.pictureBox1);
+            this.pnlInicio.Location = new System.Drawing.Point(251, 43);
+            this.pnlInicio.Name = "pnlInicio";
+            this.pnlInicio.Size = new System.Drawing.Size(749, 457);
+            this.pnlInicio.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(292, 259);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 23);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Bienvenido al Sistema";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Aerolinea.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(146, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(454, 454);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pnlPais
+            // 
+            this.pnlPais.Controls.Add(this.label2);
+            this.pnlPais.Location = new System.Drawing.Point(1033, 49);
+            this.pnlPais.Name = "pnlPais";
+            this.pnlPais.Size = new System.Drawing.Size(749, 457);
+            this.pnlPais.TabIndex = 9;
+            // 
+            // pnlVueloDirecto
+            // 
+            this.pnlVueloDirecto.Controls.Add(this.label3);
+            this.pnlVueloDirecto.Location = new System.Drawing.Point(1809, 49);
+            this.pnlVueloDirecto.Name = "pnlVueloDirecto";
+            this.pnlVueloDirecto.Size = new System.Drawing.Size(749, 457);
+            this.pnlVueloDirecto.TabIndex = 10;
+            // 
+            // pnlCrear
+            // 
+            this.pnlCrear.Controls.Add(this.label4);
+            this.pnlCrear.Location = new System.Drawing.Point(21, 538);
+            this.pnlCrear.Name = "pnlCrear";
+            this.pnlCrear.Size = new System.Drawing.Size(749, 457);
+            this.pnlCrear.TabIndex = 9;
+            // 
+            // pnlRegistro
+            // 
+            this.pnlRegistro.Controls.Add(this.label5);
+            this.pnlRegistro.Location = new System.Drawing.Point(796, 538);
+            this.pnlRegistro.Name = "pnlRegistro";
+            this.pnlRegistro.Size = new System.Drawing.Size(749, 457);
+            this.pnlRegistro.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(349, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 46);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "PAIS";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(60, 198);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(347, 46);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "VUELO DIRECTO";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(320, 205);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(161, 46);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "CREAR";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(320, 205);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(228, 46);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "REGISTRO";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 500);
-            this.Controls.Add(this.panel1);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1946, 1106);
+            this.Controls.Add(this.pnlRegistro);
+            this.Controls.Add(this.pnlCrear);
+            this.Controls.Add(this.pnlVueloDirecto);
+            this.Controls.Add(this.pnlInicio);
+            this.Controls.Add(this.pnlPais);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlBarra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -200,6 +347,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctPais)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo1)).EndInit();
+            this.pnlInicio.ResumeLayout(false);
+            this.pnlInicio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlPais.ResumeLayout(false);
+            this.pnlPais.PerformLayout();
+            this.pnlVueloDirecto.ResumeLayout(false);
+            this.pnlVueloDirecto.PerformLayout();
+            this.pnlCrear.ResumeLayout(false);
+            this.pnlCrear.PerformLayout();
+            this.pnlRegistro.ResumeLayout(false);
+            this.pnlRegistro.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -217,7 +375,17 @@
         private System.Windows.Forms.PictureBox pctRutas;
         private System.Windows.Forms.PictureBox pctVueloDirecto;
         private System.Windows.Forms.PictureBox pctPais;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlInicio;
+        private System.Windows.Forms.Panel pnlPais;
+        private System.Windows.Forms.Panel pnlVueloDirecto;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel pnlCrear;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel pnlRegistro;
+        private System.Windows.Forms.Label label5;
     }
 }
 

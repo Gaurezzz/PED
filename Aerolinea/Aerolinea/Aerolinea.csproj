@@ -82,31 +82,106 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1.png" />
+    <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2.png" />
+    <None Include="Resources\min.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo pequenio.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\11.png" />
+    <None Include="Resources\agregarNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\21.png" />
+    <None Include="Resources\paisNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\3.png" />
+    <None Include="Resources\vueloNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\4.png" />
+    <None Include="Resources\rutasNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\5.png" />
+    <None Include="Resources\crearNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\6.png" />
+    <None Include="Resources\registroNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\min1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\min2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\min3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crear2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crear3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registro1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registro2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registro3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuelo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuelo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuelo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rutas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rutas2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rutas3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
