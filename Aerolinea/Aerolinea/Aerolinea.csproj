@@ -51,12 +51,66 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="formBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formBase.Designer.cs">
+      <DependentUpon>formBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCrear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCrear.Designer.cs">
+      <DependentUpon>frmCrear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPais.Designer.cs">
+      <DependentUpon>frmPais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistro.Designer.cs">
+      <DependentUpon>frmRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVuelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVuelo.Designer.cs">
+      <DependentUpon>FrmVuelo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grafo.cs" />
     <Compile Include="Nodo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formBase.resx">
+      <DependentUpon>formBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCrear.resx">
+      <DependentUpon>frmCrear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPais.resx">
+      <DependentUpon>frmPais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistro.resx">
+      <DependentUpon>frmRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVuelo.resx">
+      <DependentUpon>FrmVuelo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

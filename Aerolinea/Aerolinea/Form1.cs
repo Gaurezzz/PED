@@ -20,21 +20,33 @@ namespace Aerolinea
         int panx = 251;
         int pany = 43;
 
+        frmInicio frmInicio = new frmInicio();
+        frmPais frmPais = new frmPais();
+        FrmVuelo frmVuelo = new FrmVuelo();
+        frmRegistro frmRegistro = new frmRegistro();
+        frmCrear frmCrear = new frmCrear();
+
         public Form1()
         {
             InitializeComponent();
             Width = 1000;
             Height = 500;
 
-            pnlPais.Location = new Point(panx, pany);
-            pnlVueloDirecto.Location = new Point(panx, pany);
-            pnlCrear.Location = new Point(panx, pany);
-            pnlRegistro.Location = new Point(panx, pany);
+            frmInicio.panel1.Parent = this;
+            frmInicio.panel1.Show();
+            frmInicio.panel1.Location = new Point(panx, pany);
 
-            pnlPais.Visible = false;
-            pnlVueloDirecto.Visible = false;
-            pnlCrear.Visible = false;
-            pnlRegistro.Visible = false;
+            frmPais.panel1.Parent = this;
+            frmPais.panel1.Location = new Point(panx, pany);
+
+            frmVuelo.panel1.Parent = this;
+            frmVuelo.panel1.Location = new Point(panx, pany);
+
+            frmCrear.panel1.Parent = this;
+            frmCrear.panel1.Location = new Point(panx, pany);
+
+            frmRegistro.panel1.Parent = this;
+            frmRegistro.panel1.Location = new Point(panx, pany);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -240,27 +252,27 @@ namespace Aerolinea
         {
             if (actual == 0)
             {
-                pnlInicio.Visible = false;
+                frmInicio.panel1.Hide();
             }
             if (actual == 1)
             {
                 pctPais.Image = global::Aerolinea.Properties.Resources.pais1;
-                pnlPais.Visible = false;
+                frmPais.panel1.Hide();
             }
             if (actual == 2)
             {
                 pctVueloDirecto.Image = global::Aerolinea.Properties.Resources.vuelo1;
-                pnlVueloDirecto.Visible = false;
+                frmVuelo.panel1.Hide();
             }
             if (actual == 3)
             {
                 pctCrear.Image = global::Aerolinea.Properties.Resources.crear1;
-                pnlCrear.Visible = false;
+                frmCrear.panel1.Hide();
             }
             if (actual == 4)
             {
                 pctRegistro.Image = global::Aerolinea.Properties.Resources.registro1;
-                pnlRegistro.Visible = false;
+                frmRegistro.panel1.Hide();
             }
         }
 
@@ -268,35 +280,35 @@ namespace Aerolinea
         {
             cambio();
             actual = 1;
-            pnlPais.Visible=true;
+            frmPais.panel1.Show();
         }
 
         private void pctVueloDirecto_Click(object sender, EventArgs e)
         {
             cambio();
             actual = 2;
-            pnlVueloDirecto.Visible = true;
+            frmVuelo.panel1.Show();
         }
 
         private void pctCrear_Click(object sender, EventArgs e)
         {
             cambio();
             actual = 3;
-            pnlCrear.Visible = true;
+            frmCrear.panel1.Show();
         }
 
         private void pctRegistro_Click(object sender, EventArgs e)
         {
             cambio();
             actual = 4;
-            pnlRegistro.Visible = true;
+            frmRegistro.panel1.Show();
         }
 
         private void pctLogo1_Click(object sender, EventArgs e)
         {
             cambio();
             actual = 0;
-            pnlInicio.Visible = true;
+            frmInicio.panel1.Show();
         }
     }
 }
