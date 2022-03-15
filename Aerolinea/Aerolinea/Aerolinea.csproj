@@ -237,6 +237,39 @@
   <ItemGroup>
     <None Include="Resources\rutas3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nombre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUbicar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUbicar11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUbicar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnUbicar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapamundi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapabase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapapanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapabase1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapaSombreado.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

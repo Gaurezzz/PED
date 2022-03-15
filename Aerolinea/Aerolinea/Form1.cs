@@ -47,6 +47,8 @@ namespace Aerolinea
 
             frmRegistro.panel1.Parent = this;
             frmRegistro.panel1.Location = new Point(panx, pany);
+
+            this.ActiveControl = frmPais.lblprueba;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -309,6 +311,11 @@ namespace Aerolinea
             cambio();
             actual = 0;
             frmInicio.panel1.Show();
+        }
+
+        private void pnlBarra_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = pnlBarra;
         }
     }
 }

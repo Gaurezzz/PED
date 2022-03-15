@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlBarra = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pctMin = new System.Windows.Forms.PictureBox();
+            this.pctCerrar = new System.Windows.Forms.PictureBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.pctRegistro = new System.Windows.Forms.PictureBox();
             this.pctCrear = new System.Windows.Forms.PictureBox();
@@ -37,9 +40,9 @@
             this.pctPais = new System.Windows.Forms.PictureBox();
             this.pctAgregar = new System.Windows.Forms.PictureBox();
             this.pctLogo1 = new System.Windows.Forms.PictureBox();
-            this.pctMin = new System.Windows.Forms.PictureBox();
-            this.pctCerrar = new System.Windows.Forms.PictureBox();
             this.pnlBarra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctRegistro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCrear)).BeginInit();
@@ -48,22 +51,59 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctPais)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBarra
             // 
             this.pnlBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(182)))), ((int)(((byte)(255)))));
+            this.pnlBarra.Controls.Add(this.panel1);
             this.pnlBarra.Controls.Add(this.pctMin);
             this.pnlBarra.Controls.Add(this.pctCerrar);
             this.pnlBarra.Location = new System.Drawing.Point(0, 0);
             this.pnlBarra.Name = "pnlBarra";
             this.pnlBarra.Size = new System.Drawing.Size(1000, 43);
             this.pnlBarra.TabIndex = 0;
+            this.pnlBarra.Click += new System.EventHandler(this.pnlBarra_Click);
             this.pnlBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBarra_MouseDown);
             this.pnlBarra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlBarra_MouseMove);
             this.pnlBarra.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlBarra_MouseUp);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(257, 43);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 156);
+            this.panel1.TabIndex = 2;
+            // 
+            // pctMin
+            // 
+            this.pctMin.Image = global::Aerolinea.Properties.Resources.min1;
+            this.pctMin.Location = new System.Drawing.Point(915, 0);
+            this.pctMin.Name = "pctMin";
+            this.pctMin.Size = new System.Drawing.Size(41, 43);
+            this.pctMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctMin.TabIndex = 2;
+            this.pctMin.TabStop = false;
+            this.pctMin.Click += new System.EventHandler(this.pctMin_Click);
+            this.pctMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctMin_MouseDown);
+            this.pctMin.MouseEnter += new System.EventHandler(this.pctMin_MouseEnter);
+            this.pctMin.MouseLeave += new System.EventHandler(this.pctMin_MouseLeave);
+            this.pctMin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctMin_MouseUp);
+            // 
+            // pctCerrar
+            // 
+            this.pctCerrar.Image = global::Aerolinea.Properties.Resources.close1;
+            this.pctCerrar.Location = new System.Drawing.Point(957, 0);
+            this.pctCerrar.Name = "pctCerrar";
+            this.pctCerrar.Size = new System.Drawing.Size(43, 43);
+            this.pctCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctCerrar.TabIndex = 1;
+            this.pctCerrar.TabStop = false;
+            this.pctCerrar.Click += new System.EventHandler(this.pctCerrar_Click);
+            this.pctCerrar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctCerrar_MouseDown);
+            this.pctCerrar.MouseEnter += new System.EventHandler(this.pctCerrar_MouseEnter);
+            this.pctCerrar.MouseLeave += new System.EventHandler(this.pctCerrar_MouseLeave);
+            this.pctCerrar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctCerrar_MouseUp);
             // 
             // pnlMenu
             // 
@@ -173,36 +213,6 @@
             this.pctLogo1.TabStop = false;
             this.pctLogo1.Click += new System.EventHandler(this.pctLogo1_Click);
             // 
-            // pctMin
-            // 
-            this.pctMin.Image = global::Aerolinea.Properties.Resources.min1;
-            this.pctMin.Location = new System.Drawing.Point(915, 0);
-            this.pctMin.Name = "pctMin";
-            this.pctMin.Size = new System.Drawing.Size(41, 43);
-            this.pctMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctMin.TabIndex = 2;
-            this.pctMin.TabStop = false;
-            this.pctMin.Click += new System.EventHandler(this.pctMin_Click);
-            this.pctMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctMin_MouseDown);
-            this.pctMin.MouseEnter += new System.EventHandler(this.pctMin_MouseEnter);
-            this.pctMin.MouseLeave += new System.EventHandler(this.pctMin_MouseLeave);
-            this.pctMin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctMin_MouseUp);
-            // 
-            // pctCerrar
-            // 
-            this.pctCerrar.Image = global::Aerolinea.Properties.Resources.close1;
-            this.pctCerrar.Location = new System.Drawing.Point(957, 0);
-            this.pctCerrar.Name = "pctCerrar";
-            this.pctCerrar.Size = new System.Drawing.Size(43, 43);
-            this.pctCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctCerrar.TabIndex = 1;
-            this.pctCerrar.TabStop = false;
-            this.pctCerrar.Click += new System.EventHandler(this.pctCerrar_Click);
-            this.pctCerrar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctCerrar_MouseDown);
-            this.pctCerrar.MouseEnter += new System.EventHandler(this.pctCerrar_MouseEnter);
-            this.pctCerrar.MouseLeave += new System.EventHandler(this.pctCerrar_MouseLeave);
-            this.pctCerrar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pctCerrar_MouseUp);
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -214,6 +224,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlBarra.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pctMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pctRegistro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCrear)).EndInit();
@@ -222,8 +234,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctPais)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -241,6 +251,7 @@
         private System.Windows.Forms.PictureBox pctRutas;
         private System.Windows.Forms.PictureBox pctVueloDirecto;
         private System.Windows.Forms.PictureBox pctPais;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
