@@ -10,12 +10,21 @@ namespace Aerolinea
 {
     public partial class frmPais : Aerolinea.formBase
     {
+        Random random = new Random();
+        Grafo obj = new Grafo();
+        public int contadorlblV = 0; //Contador para el label de vertices
+        public int contadorlblA = 0; //Contador para el label de aristas
 
-        Graphics g;
+        //Elementos de grafico
+        private Bitmap bmp;
+        private Pen lapiz;
+        private Graphics g;
+
         public frmPais()
         {
             InitializeComponent();
             g = pnlDibujo.CreateGraphics();
+            
         }
 
         bool ubicarNodo = false;
@@ -84,5 +93,13 @@ namespace Aerolinea
                 ubicarNodo = false;
             }
         }
+
+        private void pnlDibujo_MouseMove(object sender, MouseEventArgs e)
+        {
+            lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);
+            
+        }
+
+        
     }
 }

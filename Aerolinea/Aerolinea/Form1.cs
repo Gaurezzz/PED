@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ namespace Aerolinea
 {
     public partial class Form1 : Form
     {
+       
         bool presionando = false;
         int px = 0;
         int py = 0;
@@ -317,5 +320,7 @@ namespace Aerolinea
         {
             this.ActiveControl = pnlBarra;
         }
+
+       
     }
 }
