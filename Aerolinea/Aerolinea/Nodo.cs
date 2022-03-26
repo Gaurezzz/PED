@@ -54,7 +54,7 @@ namespace Aerolinea
         public string Color
         {
             get { return color; }
-            set { Color = value; }
+            set { color = value; }
         }
         public int Tamaño
         {

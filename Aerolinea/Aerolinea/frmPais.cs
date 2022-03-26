@@ -98,6 +98,63 @@ namespace Aerolinea
         {
             lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);
             
+            
+        }
+
+        private void pnlDibujo_MouseDown(object sender, MouseEventArgs e)
+        {
+            g = pnlDibujo.CreateGraphics();
+            string nombre = txtPais.Text;
+
+            //Escribir nombres
+            SolidBrush s = new SolidBrush(Color.Black);
+            FontFamily ff = new FontFamily("Consolas");
+            Font font = new Font(ff, 15);
+
+            lapiz=new Pen(Color.Black,3);
+            g.DrawArc(lapiz, new Rectangle(e.X, e.Y, 5, 5), 0, 360);
+            g.DrawString(nombre, font, s, e.X - 10, e.Y - 30);
+
+            InsertarManualmente(e.X, e.Y);
+            
+        }
+
+        //Metodo para insertar manualmente
+        public void InsertarManualmente(int x, int y)
+        {
+            try
+            {
+                string nombre = txtPais.Text;
+                nombre = nombre.Trim();
+                if (nombre != "" && x <= 749 && y <= 610)
+                {
+                    Nodo vertice = new Nodo();
+                    vertice.Nombre = nombre;
+                    vertice.PosX = x;
+                    vertice.PosY = y;
+                    vertice.Color = "black";
+                    vertice.Grosor = 3;
+                    vertice.Tamaño = 5;
+
+                    if (!obj.ExisteV(vertice))
+                    {
+                        contadorlblV += 1;
+                        txtPais.Text = "";
+                        txtPais.Text = "Vertice" + contadorlblV;
+                    }
+                    obj.InsertarVertice(vertice);
+                    lblvertices.Text = "VERTICES: " + contadorlblV;
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("PROPIEDADES DEL VERTICE INVALIDAS:\n" +
+                    "\n" +
+                    "1.- Los vertices deben tener nombre \n" +
+                    "2.- La posición X es un número entero positvo (máximo 749)\n" +
+                    "3.- La posición Y es un número entero positivo (máximo 339)\n","ERROR", MessageBoxButtons.OK);
+            }
         }
 
         

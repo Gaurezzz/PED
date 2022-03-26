@@ -32,8 +32,6 @@
             this.lblLocalizacion = new System.Windows.Forms.Label();
             this.lblaristas = new System.Windows.Forms.Label();
             this.lblvertices = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.lblprueba = new System.Windows.Forms.Label();
             this.pnlEntrada = new System.Windows.Forms.Panel();
@@ -52,8 +50,6 @@
             this.panel1.Controls.Add(this.lblLocalizacion);
             this.panel1.Controls.Add(this.lblaristas);
             this.panel1.Controls.Add(this.lblvertices);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pnlDibujo);
             this.panel1.Controls.Add(this.lblprueba);
             this.panel1.Controls.Add(this.pnlEntrada);
@@ -73,36 +69,20 @@
             // lblaristas
             // 
             this.lblaristas.AutoSize = true;
-            this.lblaristas.Location = new System.Drawing.Point(87, 433);
+            this.lblaristas.Location = new System.Drawing.Point(12, 433);
             this.lblaristas.Name = "lblaristas";
-            this.lblaristas.Size = new System.Drawing.Size(0, 15);
-            this.lblaristas.TabIndex = 9;
+            this.lblaristas.Size = new System.Drawing.Size(58, 15);
+            this.lblaristas.TabIndex = 7;
+            this.lblaristas.Text = "ARISTAS:";
             // 
             // lblvertices
             // 
             this.lblvertices.AutoSize = true;
-            this.lblvertices.Location = new System.Drawing.Point(87, 408);
+            this.lblvertices.Location = new System.Drawing.Point(12, 408);
             this.lblvertices.Name = "lblvertices";
-            this.lblvertices.Size = new System.Drawing.Size(0, 15);
-            this.lblvertices.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 433);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "ARISTAS:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 408);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "VERTICES:";
+            this.lblvertices.Size = new System.Drawing.Size(69, 15);
+            this.lblvertices.TabIndex = 6;
+            this.lblvertices.Text = "VERTICES:";
             // 
             // pnlDibujo
             // 
@@ -114,6 +94,7 @@
             this.pnlDibujo.TabStop = false;
             this.pnlDibujo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDibujo_Paint);
             this.pnlDibujo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseClick);
+            this.pnlDibujo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseDown);
             this.pnlDibujo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseMove);
             // 
             // lblprueba
@@ -200,8 +181,6 @@
         public System.Windows.Forms.PictureBox pnlDibujo;
         private System.Windows.Forms.Label lblaristas;
         private System.Windows.Forms.Label lblvertices;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblLocalizacion;
     }
 }
