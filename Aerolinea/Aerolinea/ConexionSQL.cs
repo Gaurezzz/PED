@@ -87,7 +87,7 @@ namespace Aerolinea
                 command = new SqlCommand(eliminarCliente, conn);
                 command.Parameters.AddWithValue("@DUI", DUI);
                 int affRows = command.ExecuteNonQuery();
-                MessageBox.Show("Elimnado Exitosamente\n" + $"Filas Afectadas {affRows}", "Eliminacion Exitosa");
+                MessageBox.Show("Elimnado Exitosamente\n" + "Filas Afectadas {affRows}", "Eliminacion Exitosa");
                 conn.Close();
             }
             catch (Exception ex)

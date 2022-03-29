@@ -14,7 +14,8 @@ namespace Aerolinea
         private String nombre;
         private int posX, posY;
         private string colorNodo;
-        private int tamaño, grosor, peso;
+        private int tamaño, grosor;
+        private int peso;
         private bool dirigido;
         private Nodo anterior;
         private Nodo vertice_antecesor;
