@@ -10,7 +10,7 @@ namespace Aerolinea
 {
     public partial class frmRegistro : Aerolinea.formBase
     {
-        public frmRegistro()
+        public frmRegistro(ref Grafo grafo)
         {
             InitializeComponent();
         }

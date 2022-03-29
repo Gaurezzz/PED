@@ -13,87 +13,34 @@ namespace Aerolinea
     public partial class frmPais : Aerolinea.formBase
     {
         Random random = new Random();
-        Grafo obj = new Grafo();
         public int contadorlblV = 0; //Contador para el label de vertices
         public int contadorlblA = 0; //Contador para el label de aristas
 
         //Elementos de grafico
-        private Bitmap bmp;
-        private Pen lapiz;
         private Graphics g;
 
-        public frmPais()
+        private Grafo obj = null;
+
+        public frmPais(ref Grafo grafo)
         {
+            obj = grafo;
             InitializeComponent();
             g = pnlDibujo.CreateGraphics();
             
         }
 
-        bool ubicarNodo = false;
-        int x = 0;
-        int y = 0;
-
-        private void btnUbicar_MouseEnter(object sender, EventArgs e)
-        {
-            btnUbicar.Image = global::Aerolinea.Properties.Resources.btnUbicar2;
-        }
-
-        private void btnUbicar_MouseLeave(object sender, EventArgs e)
-        {
-            btnUbicar.Image = global::Aerolinea.Properties.Resources.btnUbicar1;
-        }
-
-        private void btnUbicar_MouseDown(object sender, MouseEventArgs e)
-        {
-            btnUbicar.Image = global::Aerolinea.Properties.Resources.btnUbicar3;
-        }
-
-        private void btnUbicar_MouseUp(object sender, MouseEventArgs e)
-        {
-            btnUbicar.Image = global::Aerolinea.Properties.Resources.btnUbicar2;
-        }
-
-        private void btnUbicar_Click(object sender, EventArgs e)
-        {
-            ubicarNodo = true;
-            pnlDibujo.Cursor = Cursors.Hand;
-        }
-
         private void txtPais_Enter(object sender, EventArgs e)
         {
-            if (txtPais.Text == "Introduzca el nombre del país a agregar") txtPais.Text = "";
-            txtPais.ForeColor = Color.FromArgb(36, 35, 35);
-        }
-
-        private void txtPais_Leave(object sender, EventArgs e)
-        {
-            if (txtPais.Text == "")
+            if (txtPais.Text == "Introduzca el nombre del país a agregar")
             {
-                txtPais.Text = "Introduzca el nombre del país a agregar";
-                txtPais.ForeColor = Color.Gray;
+                txtPais.Text = "";
+                txtPais.Text = "Vertice" + contadorlblV;
             }
+            txtPais.ForeColor = Color.FromArgb(36, 35, 35);
         }
 
         private void pnlDibujo_Paint(object sender, PaintEventArgs e)
         {
-        }
-
-        private void pnlDibujo_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (ubicarNodo == true)
-            {
-
-                x = e.X;
-                y = e.Y;
-
-                Pen lapiz = new Pen(Color.Gray, 3);
-                SolidBrush relleno = new SolidBrush(Color.FromArgb(56, 182, 255));
-
-                g.DrawEllipse(lapiz, x - 7, y - 7, 14, 14);
-                g.FillEllipse(relleno, x - 7, y - 7, 14, 14);
-
-                ubicarNodo = false;
-            }
         }
 
         private void pnlDibujo_MouseMove(object sender, MouseEventArgs e)
@@ -108,17 +55,15 @@ namespace Aerolinea
             g = pnlDibujo.CreateGraphics();
             string nombre = txtPais.Text;
 
-            //Escribir nombres
-            SolidBrush s = new SolidBrush(Color.Black);
-            FontFamily ff = new FontFamily("Consolas");
-            Font font = new Font(ff, 15);
-
-            lapiz=new Pen(Color.Black,3);
-            g.DrawArc(lapiz, new Rectangle(e.X, e.Y, 5, 5), 0, 360);
-            g.DrawString(nombre, font, s, e.X - 10, e.Y - 30);
+            if (nombre == "Introduzca el nombre del país a agregar")
+            {
+                MessageBox.Show("Escriba un nombre para el vertice", "ERROR", MessageBoxButtons.OK);
+                return;
+            }
 
             InsertarManualmente(e.X, e.Y);
-            
+
+            actualizarMapa();
         }
 
         //Metodo para insertar manualmente
@@ -134,7 +79,7 @@ namespace Aerolinea
                     vertice.Nombre = nombre;
                     vertice.PosX = x;
                     vertice.PosY = y;
-                    vertice.Color = "black";
+                    vertice.ColorNodo = "black";
                     vertice.Grosor = 3;
                     vertice.Tamaño = 5;
 
@@ -159,6 +104,43 @@ namespace Aerolinea
             }
         }
 
-        
+        public void actualizarMapa()
+        {
+
+            pnlDibujo.Refresh();
+
+            Nodo[] vertices = obj.ObtenerVertices();
+            Nodo[] aristas = obj.ObtenerAristas();
+
+            SolidBrush s = new SolidBrush(Color.Black);
+            FontFamily ff = new FontFamily("Consolas");
+            Font font = new Font(ff, 15);
+
+            Pen lapiz = new Pen(Color.Black, 3);
+
+            for (int i = 0; i < vertices.Length; i++)
+            {
+                g.DrawArc(lapiz, new Rectangle(vertices[i].PosX, vertices[i].PosY, 5, 5), 0, 360);
+                g.DrawString(vertices[i].Nombre, font, s, vertices[i].PosX - 10, vertices[i].PosY - 30);
+            }
+
+            for (int i = 0; i < aristas.Length; i++)
+            {
+                Nodo inicio = aristas[i].VerticeAntecesor;
+                Nodo final = aristas[i].VerticeAdyacente;
+
+                int ix = inicio.PosX;
+                int iy = inicio.PosY;
+                int fx = final.PosX;
+                int fy = final.PosY;
+
+                g.DrawLine(lapiz, ix, iy, fx, fy);
+            }
+        }
+
+        private void pnlDibujo_VisibleChanged(object sender, EventArgs e)
+        {
+            actualizarMapa();
+        }
     }
 }

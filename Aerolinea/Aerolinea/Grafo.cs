@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Aerolinea
 {
-    class Grafo
+    public class Grafo
     {
         //Vertices
         private Nodo V_inicial = new Nodo();
@@ -199,11 +199,11 @@ namespace Aerolinea
                 Nodo S = LocalizaVertice(a.Nombre);
                 Nodo nuevoS = new Nodo();
                 nuevoS.Nombre = s.Nombre;
-                if (Antecesores(S) == 0)
+                 if (Antecesores(S) == 0)
                 {
                     S.VerticeAntecesor = nuevoS;
                     S.VerticeAdyacente = nuevoS;
-                }
+                } 
                 else
                 {
                     nuevoS.VerticeAntecesor = S.VerticeAntecesor;
@@ -353,7 +353,7 @@ namespace Aerolinea
         //Metodo que comprueba que hay arista y vertices
         public Nodo ExistaArista_Vertices(Nodo ant, Nodo ady)
         {
-            string[] buscados = ObtenerAristas();
+            string[] buscados = ObtenerAristasString();
             for (int i = 0; i < Na; i++)
             {
                 Nodo actual = LocalizaArista(buscados[i]);
@@ -398,7 +398,19 @@ namespace Aerolinea
         }
 
         //Metodo que devuelve todos los nombres de los vertices
-        public string[] ObtenerVertices()
+        public Nodo[] ObtenerVertices()
+        {
+            Nodo[] NombresV = new Nodo[Nv];
+            Nodo Actual = V_inicial;
+            for (int i = 0; i < Nv; i++)
+            {
+                NombresV[i] = Actual;
+                Actual = Actual.Siguiente;
+            }
+            return NombresV;
+        }
+
+        public string[] ObtenerVerticesString()
         {
             string[] NombresV = new string[Nv];
             Nodo Actual = V_inicial;
@@ -411,7 +423,19 @@ namespace Aerolinea
         }
 
         //Metodo que devuelve todos los nombres de las aristas
-        public string[] ObtenerAristas()
+        public Nodo[] ObtenerAristas()
+        {
+            Nodo[] NombresA = new Nodo[Na];
+            Nodo Actual = A_inicial;
+            for (int i = 0; i < Na; i++)
+            {
+                NombresA[i] = Actual;
+                Actual = Actual.Siguiente;
+            }
+            return NombresA;
+        }
+
+        public string[] ObtenerAristasString()
         {
             string[] NombresA = new string[Na];
             Nodo Actual = A_inicial;
@@ -488,7 +512,7 @@ namespace Aerolinea
                 {
 
                     //Buscamos a quien se dirige
-                    if (ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna)) != null)
+                    if (ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna )) != null)
                     {
                         //Calculamos la distancia
                         distancia = ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna)).Peso + tabla[actual, 1];

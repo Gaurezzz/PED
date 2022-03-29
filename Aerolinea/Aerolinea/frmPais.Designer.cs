@@ -35,13 +35,11 @@
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.lblprueba = new System.Windows.Forms.Label();
             this.pnlEntrada = new System.Windows.Forms.Panel();
-            this.btnUbicar = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
             this.pnlEntrada.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUbicar)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,8 +90,8 @@
             this.pnlDibujo.Size = new System.Drawing.Size(749, 339);
             this.pnlDibujo.TabIndex = 5;
             this.pnlDibujo.TabStop = false;
+            this.pnlDibujo.VisibleChanged += new System.EventHandler(this.pnlDibujo_VisibleChanged);
             this.pnlDibujo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDibujo_Paint);
-            this.pnlDibujo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseClick);
             this.pnlDibujo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseDown);
             this.pnlDibujo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseMove);
             // 
@@ -109,26 +107,11 @@
             // pnlEntrada
             // 
             this.pnlEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
-            this.pnlEntrada.Controls.Add(this.btnUbicar);
             this.pnlEntrada.Controls.Add(this.panel2);
             this.pnlEntrada.Location = new System.Drawing.Point(0, 0);
             this.pnlEntrada.Name = "pnlEntrada";
             this.pnlEntrada.Size = new System.Drawing.Size(749, 118);
             this.pnlEntrada.TabIndex = 4;
-            // 
-            // btnUbicar
-            // 
-            this.btnUbicar.Image = global::Aerolinea.Properties.Resources.btnUbicar1;
-            this.btnUbicar.Location = new System.Drawing.Point(586, 33);
-            this.btnUbicar.Name = "btnUbicar";
-            this.btnUbicar.Size = new System.Drawing.Size(151, 50);
-            this.btnUbicar.TabIndex = 2;
-            this.btnUbicar.TabStop = false;
-            this.btnUbicar.Click += new System.EventHandler(this.btnUbicar_Click);
-            this.btnUbicar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnUbicar_MouseDown);
-            this.btnUbicar.MouseEnter += new System.EventHandler(this.btnUbicar_MouseEnter);
-            this.btnUbicar.MouseLeave += new System.EventHandler(this.btnUbicar_MouseLeave);
-            this.btnUbicar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnUbicar_MouseUp);
             // 
             // panel2
             // 
@@ -137,7 +120,7 @@
             this.panel2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(23, 33);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(557, 40);
+            this.panel2.Size = new System.Drawing.Size(704, 40);
             this.panel2.TabIndex = 1;
             // 
             // txtPais
@@ -151,7 +134,6 @@
             this.txtPais.TabIndex = 0;
             this.txtPais.Text = "Introduzca el nombre del país a agregar";
             this.txtPais.Enter += new System.EventHandler(this.txtPais_Enter);
-            this.txtPais.Leave += new System.EventHandler(this.txtPais_Leave);
             // 
             // frmPais
             // 
@@ -163,7 +145,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).EndInit();
             this.pnlEntrada.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnUbicar)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -176,7 +157,6 @@
         private System.Windows.Forms.Panel pnlEntrada;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtPais;
-        private System.Windows.Forms.PictureBox btnUbicar;
         public System.Windows.Forms.Label lblprueba;
         public System.Windows.Forms.PictureBox pnlDibujo;
         private System.Windows.Forms.Label lblaristas;

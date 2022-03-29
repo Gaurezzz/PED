@@ -14,7 +14,8 @@ namespace Aerolinea
 {
     public partial class Form1 : Form
     {
-       
+        static public Grafo obj = new Grafo();
+
         bool presionando = false;
         int px = 0;
         int py = 0;
@@ -24,10 +25,10 @@ namespace Aerolinea
         int pany = 43;
 
         frmInicio frmInicio = new frmInicio();
-        frmPais frmPais = new frmPais();
-        FrmVuelo frmVuelo = new FrmVuelo();
-        frmRegistro frmRegistro = new frmRegistro();
-        frmCrear frmCrear = new frmCrear();
+        frmPais frmPais = new frmPais(ref obj);
+        FrmVuelo frmVuelo = new FrmVuelo(ref obj);
+        frmRegistro frmRegistro = new frmRegistro(ref obj);
+        frmCrear frmCrear = new frmCrear(ref obj);
 
         public Form1()
         {

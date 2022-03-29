@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Aerolinea
 {
-    class Nodo
+    public class Nodo
     {
         //Declarando variables
         private String nombre;
         private int posX, posY;
-        private string color;
+        private string colorNodo;
         private int tamaño, grosor, peso;
         private bool dirigido;
         private Nodo anterior;
@@ -25,7 +27,7 @@ namespace Aerolinea
             nombre = null;
             posX = 0;
             posY = 0;
-            color = "";
+            colorNodo = "";
             tamaño = 0;
             grosor = 0;
             peso = 0;
@@ -51,10 +53,10 @@ namespace Aerolinea
             get { return posY; }
             set { posY = value; }
         }
-        public string Color
+        public string ColorNodo
         {
-            get { return color; }
-            set { color = value; }
+            get { return colorNodo; }
+            set { colorNodo = value; }
         }
         public int Tamaño
         {
@@ -97,8 +99,6 @@ namespace Aerolinea
             get { return siguiente; }
             set { siguiente = value; }
         }
-
-
-
+        
     }
 }
