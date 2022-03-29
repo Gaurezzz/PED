@@ -17,13 +17,22 @@ namespace Aerolinea
         public Base_de_Datos()
         {
             InitializeComponent();
+            Conectar();
         }
-
-        private void btnConectar_Click(object sender, EventArgs e)
+        public void Conectar()
         {
-            ConexionSQL=new ConexionSQL();
+            ConexionSQL = new ConexionSQL();
+            if (ConexionSQL.Estado == true)
+            {
+                lbEstado.Text = "Estado de la conexion: Activa";
+                btnReconectar.Visible = false;
+            }
+            else
+            {
+                lbEstado.Text = "Estado de la conexion: Inactiva";
+                btnReconectar.Visible = true;
+            }
         }
-
         private void btnInsertar_Click(object sender, EventArgs e)
         {
             cliente.DUI = txtDui.Text;
@@ -31,16 +40,19 @@ namespace Aerolinea
             cliente.Apellido=txtApellido.Text;
             cliente.Edad = nudEdad.Text;
 
+            Conectar();
             ConexionSQL.AgregarCliente(cliente);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            Conectar();
             ConexionSQL.EliminarCliente(txtEDui.Text);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            Conectar();
             ConexionSQL.BuscarCliente(txtBDui.Text, out cliente);
 
             txtBNombre.Text = cliente.Nombre;
@@ -49,6 +61,7 @@ namespace Aerolinea
         }
         private void btnMBuscar_Click(object sender, EventArgs e)
         {
+            Conectar();
             ConexionSQL.BuscarCliente(txtMDui.Text, out cliente);
 
             txtMNombre.Text = cliente.Nombre;
@@ -63,7 +76,21 @@ namespace Aerolinea
             cliente.Apellido = txtMApellido.Text;
             cliente.Edad = nudMEdad.Text;
 
+            Conectar();
             ConexionSQL.ModificarCliente(cliente);
+        }
+        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+        {
+            Conectar();
+            if (ConexionSQL.Estado == true)
+                MessageBox.Show("Conectado", "Conexion con SQL");
+        }
+
+        private void btnMostrarClientes_Click(object sender, EventArgs e)
+        {
+            Conectar();
+            dgvClientes.DataSource = ConexionSQL.MostrarClientes();
+            dgvClientes.AutoResizeColumns();
         }
     }
 }

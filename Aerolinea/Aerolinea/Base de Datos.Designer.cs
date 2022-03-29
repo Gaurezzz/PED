@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Base_de_Datos));
             this.btnInsertar = new System.Windows.Forms.Button();
             this.txtDui = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -36,15 +37,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnConectar = new System.Windows.Forms.Button();
             this.nudEdad = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEDui = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtBDui = new System.Windows.Forms.TextBox();
             this.txtBNombre = new System.Windows.Forms.TextBox();
             this.nudBEdad = new System.Windows.Forms.NumericUpDown();
@@ -52,6 +53,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnMBuscar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtMDui = new System.Windows.Forms.TextBox();
             this.txtMNombre = new System.Windows.Forms.TextBox();
@@ -60,17 +64,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnMBuscar = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbEstado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnReconectar = new System.Windows.Forms.ToolStripSplitButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.btnMostrarClientes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBEdad)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMEdad)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInsertar
@@ -140,16 +149,6 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Edad:";
             // 
-            // btnConectar
-            // 
-            this.btnConectar.Location = new System.Drawing.Point(220, 35);
-            this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(75, 23);
-            this.btnConectar.TabIndex = 9;
-            this.btnConectar.Text = "Conectar";
-            this.btnConectar.UseVisualStyleBackColor = true;
-            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
-            // 
             // nudEdad
             // 
             this.nudEdad.Location = new System.Drawing.Point(59, 115);
@@ -165,7 +164,6 @@
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.nudEdad);
             this.groupBox1.Controls.Add(this.txtApellido);
-            this.groupBox1.Controls.Add(this.btnConectar);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -188,6 +186,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Eliminar Cliente";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "DUI:";
+            // 
+            // txtEDui
+            // 
+            this.txtEDui.Location = new System.Drawing.Point(41, 37);
+            this.txtEDui.Name = "txtEDui";
+            this.txtEDui.Size = new System.Drawing.Size(155, 20);
+            this.txtEDui.TabIndex = 6;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(196, 125);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 0;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnBuscar);
@@ -206,50 +230,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Buscar Cliente";
             // 
-            // groupBox4
+            // btnBuscar
             // 
-            this.groupBox4.Controls.Add(this.btnMBuscar);
-            this.groupBox4.Controls.Add(this.btnModificar);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.txtMDui);
-            this.groupBox4.Controls.Add(this.txtMNombre);
-            this.groupBox4.Controls.Add(this.nudMEdad);
-            this.groupBox4.Controls.Add(this.txtMApellido);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Location = new System.Drawing.Point(324, 172);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(306, 170);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Modificar Cliente";
+            this.btnBuscar.Location = new System.Drawing.Point(240, 36);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(55, 23);
+            this.btnBuscar.TabIndex = 20;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnEliminar
+            // label6
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(196, 125);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 0;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "DUI:";
-            // 
-            // txtEDui
-            // 
-            this.txtEDui.Location = new System.Drawing.Point(41, 37);
-            this.txtEDui.Name = "txtEDui";
-            this.txtEDui.Size = new System.Drawing.Size(155, 20);
-            this.txtEDui.TabIndex = 6;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Ingrese DUI:";
             // 
             // txtBDui
             // 
@@ -313,6 +311,45 @@
             this.label9.Size = new System.Drawing.Size(47, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "Apellido:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnMBuscar);
+            this.groupBox4.Controls.Add(this.btnModificar);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.txtMDui);
+            this.groupBox4.Controls.Add(this.txtMNombre);
+            this.groupBox4.Controls.Add(this.nudMEdad);
+            this.groupBox4.Controls.Add(this.txtMApellido);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Location = new System.Drawing.Point(324, 172);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(306, 170);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Modificar Cliente";
+            // 
+            // btnMBuscar
+            // 
+            this.btnMBuscar.Location = new System.Drawing.Point(240, 34);
+            this.btnMBuscar.Name = "btnMBuscar";
+            this.btnMBuscar.Size = new System.Drawing.Size(55, 23);
+            this.btnMBuscar.TabIndex = 21;
+            this.btnMBuscar.Text = "Buscar";
+            this.btnMBuscar.UseVisualStyleBackColor = true;
+            this.btnMBuscar.Click += new System.EventHandler(this.btnMBuscar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(216, 141);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 19;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // label10
             // 
@@ -378,54 +415,83 @@
             this.label13.TabIndex = 16;
             this.label13.Text = "Apellido:";
             // 
-            // label6
+            // statusStrip1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Ingrese DUI:";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbEstado,
+            this.btnReconectar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 348);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(983, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 15;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // btnModificar
+            // lbEstado
             // 
-            this.btnModificar.Location = new System.Drawing.Point(216, 141);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 19;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.lbEstado.Name = "lbEstado";
+            this.lbEstado.Size = new System.Drawing.Size(886, 17);
+            this.lbEstado.Spring = true;
+            this.lbEstado.Text = "Estado de la conexion: NULL";
             // 
-            // btnBuscar
+            // btnReconectar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(240, 36);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(55, 23);
-            this.btnBuscar.TabIndex = 20;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnReconectar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnReconectar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReconectar.Image = ((System.Drawing.Image)(resources.GetObject("btnReconectar.Image")));
+            this.btnReconectar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReconectar.Name = "btnReconectar";
+            this.btnReconectar.Size = new System.Drawing.Size(82, 20);
+            this.btnReconectar.Text = "Reconectar";
+            this.btnReconectar.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
             // 
-            // btnMBuscar
+            // groupBox5
             // 
-            this.btnMBuscar.Location = new System.Drawing.Point(240, 34);
-            this.btnMBuscar.Name = "btnMBuscar";
-            this.btnMBuscar.Size = new System.Drawing.Size(55, 23);
-            this.btnMBuscar.TabIndex = 21;
-            this.btnMBuscar.Text = "Buscar";
-            this.btnMBuscar.UseVisualStyleBackColor = true;
-            this.btnMBuscar.Click += new System.EventHandler(this.btnMBuscar_Click);
+            this.groupBox5.Controls.Add(this.btnMostrarClientes);
+            this.groupBox5.Controls.Add(this.dgvClientes);
+            this.groupBox5.Location = new System.Drawing.Point(636, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(335, 330);
+            this.groupBox5.TabIndex = 16;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Mostrar Clientes";
+            // 
+            // dgvClientes
+            // 
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Location = new System.Drawing.Point(6, 19);
+            this.dgvClientes.MultiSelect = false;
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersVisible = false;
+            this.dgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(323, 276);
+            this.dgvClientes.TabIndex = 0;
+            // 
+            // btnMostrarClientes
+            // 
+            this.btnMostrarClientes.Location = new System.Drawing.Point(229, 301);
+            this.btnMostrarClientes.Name = "btnMostrarClientes";
+            this.btnMostrarClientes.Size = new System.Drawing.Size(100, 23);
+            this.btnMostrarClientes.TabIndex = 1;
+            this.btnMostrarClientes.Text = "Mostrar Clientes";
+            this.btnMostrarClientes.UseVisualStyleBackColor = true;
+            this.btnMostrarClientes.Click += new System.EventHandler(this.btnMostrarClientes_Click);
             // 
             // Base_de_Datos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 354);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(983, 370);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "Base_de_Datos";
             this.Text = "Base de Datos";
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).EndInit();
@@ -435,11 +501,16 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBEdad)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBEdad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMEdad)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -453,7 +524,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.NumericUpDown nudEdad;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -481,5 +551,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lbEstado;
+        private System.Windows.Forms.ToolStripSplitButton btnReconectar;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnMostrarClientes;
+        private System.Windows.Forms.DataGridView dgvClientes;
     }
 }
