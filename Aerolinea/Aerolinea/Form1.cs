@@ -59,10 +59,6 @@ namespace Aerolinea
             this.ActiveControl = frmPais.lblprueba;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        { 
-        }
-
         private void pctAgregar_Click(object sender, EventArgs e)
         {
             actual = 1;
@@ -325,7 +321,5 @@ namespace Aerolinea
         {
             this.ActiveControl = pnlBarra;
         }
-
-       
     }
 }

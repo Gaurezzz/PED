@@ -39,15 +39,9 @@ namespace Aerolinea
             txtPais.ForeColor = Color.FromArgb(36, 35, 35);
         }
 
-        private void pnlDibujo_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void pnlDibujo_MouseMove(object sender, MouseEventArgs e)
         {
             lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);
-            
-            
         }
 
         private void pnlDibujo_MouseDown(object sender, MouseEventArgs e)
@@ -137,7 +131,6 @@ namespace Aerolinea
                 g.DrawLine(lapiz, ix, iy, fx, fy);
             }
         }
-
         private void pnlDibujo_VisibleChanged(object sender, EventArgs e)
         {
             actualizarMapa();
