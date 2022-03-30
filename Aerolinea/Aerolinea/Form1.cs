@@ -14,6 +14,8 @@ namespace Aerolinea
 {
     public partial class Form1 : Form
     {
+        //A continuacion se declaran las variables globales del formulario principal
+
         static public Grafo obj = new Grafo();
 
         bool presionando = false;
@@ -30,11 +32,15 @@ namespace Aerolinea
         frmRegistro frmRegistro = new frmRegistro(ref obj);
         frmCrear frmCrear = new frmCrear(ref obj);
 
+        //Inicializamos todos los elementos que necesitaremos
+
         public Form1()
         {
             InitializeComponent();
             Width = 1000;
             Height = 500;
+
+            //por cada uno de los paneles, les reasignaremos el padre y los ubicaremos en el form1
 
             frmInicio.panel1.Parent = this;
             frmInicio.panel1.Visible = true;
@@ -59,11 +65,7 @@ namespace Aerolinea
             this.ActiveControl = frmPais.lblprueba;
         }
 
-        private void pctAgregar_Click(object sender, EventArgs e)
-        {
-            actual = 1;
-        }
-
+        //Aqui se configura la barra superior para permitirle ser arrastrada
         private void pnlBarra_MouseDown(object sender, MouseEventArgs e)
         {
             presionando = true;
@@ -84,6 +86,11 @@ namespace Aerolinea
             }
         }
 
+
+        //En esta seccion se editan los cambios en las imagenes de los botones
+
+        //Boton cerrar
+
         private void pctCerrar_MouseEnter(object sender, EventArgs e)
         {
             pctCerrar.Image = global::Aerolinea.Properties.Resources.close2;
@@ -93,6 +100,23 @@ namespace Aerolinea
         {
             pctCerrar.Image = global::Aerolinea.Properties.Resources.close1;
         }
+
+        private void pctCerrar_MouseDown(object sender, MouseEventArgs e)
+        {
+            pctCerrar.Image = global::Aerolinea.Properties.Resources.close3;
+        }
+
+        private void pctCerrar_MouseUp(object sender, MouseEventArgs e)
+        {
+            pctCerrar.Image = global::Aerolinea.Properties.Resources.close2;
+        }
+
+        private void pctCerrar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        //Boton minimizar
 
         private void pctMin_MouseEnter(object sender, EventArgs e)
         {
@@ -114,15 +138,12 @@ namespace Aerolinea
             pctMin.Image = global::Aerolinea.Properties.Resources.min2;
         }
 
-        private void pctCerrar_MouseDown(object sender, MouseEventArgs e)
+        private void pctMin_Click(object sender, EventArgs e)
         {
-            pctCerrar.Image = global::Aerolinea.Properties.Resources.close3;
+            this.WindowState = FormWindowState.Minimized;
         }
 
-        private void pctCerrar_MouseUp(object sender, MouseEventArgs e)
-        {
-            pctCerrar.Image = global::Aerolinea.Properties.Resources.close2;
-        }
+        //Boton pais
 
         private void pctPais_MouseDown(object sender, MouseEventArgs e)
         {
@@ -149,6 +170,8 @@ namespace Aerolinea
         {
             pctPais.Image = global::Aerolinea.Properties.Resources.pais2;
         }
+
+        //Boton vuelo directo
 
         private void pctVueloDirecto_MouseDown(object sender, MouseEventArgs e)
         {
@@ -181,6 +204,8 @@ namespace Aerolinea
 
         }
 
+        //Boton crear
+
         private void pctCrear_MouseDown(object sender, MouseEventArgs e)
         {
             pctCrear.Image = global::Aerolinea.Properties.Resources.crear3;
@@ -211,6 +236,8 @@ namespace Aerolinea
             if (actual == 3) pctCrear.Image = global::Aerolinea.Properties.Resources.crear2;
             if (actual == 4) pctRegistro.Image = global::Aerolinea.Properties.Resources.registro2;
         }
+
+        //Boton registro
 
         private void pctRegistro_MouseDown(object sender, MouseEventArgs e)
         {
@@ -244,15 +271,7 @@ namespace Aerolinea
 
         }
 
-        private void pctCerrar_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.Exit();
-        }
-
-        private void pctMin_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+        //En la siguiente funcion determino los cambios de visibilidad en los paneles
 
         public void cambio()
         {
@@ -281,6 +300,8 @@ namespace Aerolinea
                 frmRegistro.panel1.Hide();
             }
         }
+
+        //Ahora defino los cambios en los paneles
 
         private void pctPais_Click(object sender, EventArgs e)
         {
@@ -316,6 +337,8 @@ namespace Aerolinea
             actual = 0;
             frmInicio.panel1.Show();
         }
+
+        //Por ultimo, la siguiente funcion es para enfocar la barra superior en un inicio
 
         private void pnlBarra_Click(object sender, EventArgs e)
         {

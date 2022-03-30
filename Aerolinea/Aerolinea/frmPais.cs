@@ -23,13 +23,13 @@ namespace Aerolinea
 
         public frmPais(ref Grafo grafo)
         {
-            obj = grafo;
+            obj = grafo; //asigno el grafo global
             InitializeComponent();
-            g = pnlDibujo.CreateGraphics();
+            g = pnlDibujo.CreateGraphics(); //la imagen del apa sera nuestro lienzo
             
         }
 
-        private void txtPais_Enter(object sender, EventArgs e)
+        private void txtPais_Enter(object sender, EventArgs e) //configuro el text box para que al ingresar, deje de dar instrucciones
         {
             if (txtPais.Text == "Introduzca el nombre del país a agregar")
             {
@@ -41,7 +41,7 @@ namespace Aerolinea
 
         private void pnlDibujo_MouseMove(object sender, MouseEventArgs e)
         {
-            lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);
+            lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);  //definimos la ubicacion del string
         }
 
         private void pnlDibujo_MouseDown(object sender, MouseEventArgs e)
@@ -55,9 +55,9 @@ namespace Aerolinea
                 return;
             }
 
-            InsertarManualmente(e.X, e.Y);
+            InsertarManualmente(e.X, e.Y); //Insertamos el nodo en el grafo
 
-            actualizarMapa();
+            actualizarMapa(); //Actualizamos graficamente
         }
 
         //Metodo para insertar manualmente
@@ -97,7 +97,7 @@ namespace Aerolinea
                     "3.- La posición Y es un número entero positivo (máximo 339)\n","ERROR", MessageBoxButtons.OK);
             }
         }
-
+        //Metodo para crear los dibujos del grafo
         public void actualizarMapa()
         {
 
@@ -131,6 +131,7 @@ namespace Aerolinea
                 g.DrawLine(lapiz, ix, iy, fx, fy);
             }
         }
+        //Cada vez que volvamos a aparecer el panel, debemos actualizar el grafico
         private void pnlDibujo_VisibleChanged(object sender, EventArgs e)
         {
             actualizarMapa();

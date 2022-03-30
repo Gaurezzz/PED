@@ -12,7 +12,7 @@ namespace Aerolinea
     {
         Grafo obj;
         Graphics g;
-        int nArista = 0;
+        int nArista = 0; //nos ayudara a crear los nombres de las aristas
         
         public FrmVuelo(ref Grafo grafo)
         {
@@ -20,7 +20,7 @@ namespace Aerolinea
             obj = grafo;
             g = pnlDibujo.CreateGraphics();
         }
-
+        //utilizamos de nuevo la funcion para actualizar el mapa
         public void actualizarMapa()
         {
             pnlDibujo.Refresh();
@@ -62,7 +62,7 @@ namespace Aerolinea
                 g.DrawString(aristas[i].Peso.ToString(), font, s, sx, sy);
             }
         }
-
+        //metodo que permite crear la lista de opciones en los combo box
         void actualizarNodos()
         {
             string[] vertices = obj.ObtenerVerticesString();
@@ -80,7 +80,7 @@ namespace Aerolinea
             actualizarMapa();
             actualizarNodos();
         }
-
+        //metodo que permite ubicar la arista
         private void btnUbicar_Click(object sender, EventArgs e)
         {
             Nodo inicio = obj.LocalizaVertice(cmbNodo1.Text);
@@ -114,7 +114,7 @@ namespace Aerolinea
 
                 arista.Peso = int.Parse(txtCosto.Text);
 
-                obj.InsertarArista(arista, inicio, final);
+                obj.InsertarArista(arista, inicio, final); //Introducimos las aristas en el grafo
 
                 actualizarMapa();
 

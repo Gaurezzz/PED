@@ -68,8 +68,8 @@
             this.lbEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnReconectar = new System.Windows.Forms.ToolStripSplitButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.btnMostrarClientes = new System.Windows.Forms.Button();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -456,6 +456,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Mostrar Clientes";
             // 
+            // btnMostrarClientes
+            // 
+            this.btnMostrarClientes.Location = new System.Drawing.Point(229, 301);
+            this.btnMostrarClientes.Name = "btnMostrarClientes";
+            this.btnMostrarClientes.Size = new System.Drawing.Size(100, 23);
+            this.btnMostrarClientes.TabIndex = 1;
+            this.btnMostrarClientes.Text = "Mostrar Clientes";
+            this.btnMostrarClientes.UseVisualStyleBackColor = true;
+            this.btnMostrarClientes.Click += new System.EventHandler(this.btnMostrarClientes_Click);
+            // 
             // dgvClientes
             // 
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -468,16 +478,6 @@
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvClientes.Size = new System.Drawing.Size(323, 276);
             this.dgvClientes.TabIndex = 0;
-            // 
-            // btnMostrarClientes
-            // 
-            this.btnMostrarClientes.Location = new System.Drawing.Point(229, 301);
-            this.btnMostrarClientes.Name = "btnMostrarClientes";
-            this.btnMostrarClientes.Size = new System.Drawing.Size(100, 23);
-            this.btnMostrarClientes.TabIndex = 1;
-            this.btnMostrarClientes.Text = "Mostrar Clientes";
-            this.btnMostrarClientes.UseVisualStyleBackColor = true;
-            this.btnMostrarClientes.Click += new System.EventHandler(this.btnMostrarClientes_Click);
             // 
             // Base_de_Datos
             // 

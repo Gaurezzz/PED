@@ -44,7 +44,6 @@
             this.ptrLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptrLogo.TabIndex = 1;
             this.ptrLogo.TabStop = false;
-            this.ptrLogo.Click += new System.EventHandler(this.ptrLogo_Click);
             // 
             // panel1
             // 
