@@ -37,19 +37,23 @@ namespace Aerolinea
             Height = 500;
 
             frmInicio.panel1.Parent = this;
-            frmInicio.panel1.Show();
+            frmInicio.panel1.Visible = true;
             frmInicio.panel1.Location = new Point(panx, pany);
 
             frmPais.panel1.Parent = this;
+            frmPais.panel1.Visible = false;
             frmPais.panel1.Location = new Point(panx, pany);
 
             frmVuelo.panel1.Parent = this;
+            frmVuelo.panel1.Visible = false;
             frmVuelo.panel1.Location = new Point(panx, pany);
 
             frmCrear.panel1.Parent = this;
+            frmCrear.panel1.Visible = false;
             frmCrear.panel1.Location = new Point(panx, pany);
 
             frmRegistro.panel1.Parent = this;
+            frmRegistro.panel1.Visible = false;
             frmRegistro.panel1.Location = new Point(panx, pany);
 
             this.ActiveControl = frmPais.lblprueba;

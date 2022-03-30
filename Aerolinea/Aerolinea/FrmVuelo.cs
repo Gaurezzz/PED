@@ -12,6 +12,8 @@ namespace Aerolinea
     {
         Grafo obj;
         Graphics g;
+        int nArista = 0;
+        
         public FrmVuelo(ref Grafo grafo)
         {
             InitializeComponent();
@@ -48,13 +50,25 @@ namespace Aerolinea
                 int fx = final.PosX;
                 int fy = final.PosY;
 
+                int sx = (fx + ix) / 2;
+                int sy = (fy + iy) / 2;
+
+                int m = sy / sx;
+
+                if (m > 1) sx += 10;
+                else sy += 10;
+
                 g.DrawLine(lapiz, ix, iy, fx, fy);
+                g.DrawString(aristas[i].Peso.ToString(), font, s, sx, sy);
             }
         }
 
         void actualizarNodos()
         {
             string[] vertices = obj.ObtenerVerticesString();
+
+            cmbNodo1.Items.Clear();
+            cmbNodo2.Items.Clear();
 
             cmbNodo1.Items.AddRange(vertices);
             cmbNodo2.Items.AddRange(vertices);
@@ -75,18 +89,43 @@ namespace Aerolinea
             if (inicio == final)
             {
                 MessageBox.Show("Introduzca dos paises diferentes entre si", "Error");
+                return;
+            }
+            if (cmbNodo1.Text == "" || cmbNodo2.Text == "")
+            {
+                MessageBox.Show("Seleccione dos destinos", "Error");
+                return;
+            }
+            if (txtCosto.Text == "")
+            {
+                MessageBox.Show("Escriba el costo del viaje", "Error");
+                return ;
             }
 
-            Nodo arista = new Nodo();
+            try
+            {
+                Nodo arista = new Nodo();
 
-            arista.VerticeAntecesor = inicio;
-            arista.VerticeAdyacente = final;
+                arista.VerticeAntecesor = inicio;
+                arista.VerticeAdyacente = final;
+                arista.Nombre = "arista" + nArista.ToString();
 
-            arista.Peso = int.Parse(txtCosto.Text);
+                nArista++;
 
-            obj.InsertarArista(arista, inicio, final);
+                arista.Peso = int.Parse(txtCosto.Text);
 
-            actualizarMapa();
+                obj.InsertarArista(arista, inicio, final);
+
+                actualizarMapa();
+
+                cmbNodo1.Text = "";
+                cmbNodo2.Text = "";
+                txtCosto.Text = "";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("El costo debe ser un numero entero", "Error");
+            }
         }
     }
 }
