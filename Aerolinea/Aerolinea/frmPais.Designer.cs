@@ -91,7 +91,6 @@
             this.pnlDibujo.TabIndex = 5;
             this.pnlDibujo.TabStop = false;
             this.pnlDibujo.VisibleChanged += new System.EventHandler(this.pnlDibujo_VisibleChanged);
-            this.pnlDibujo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDibujo_Paint);
             this.pnlDibujo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseDown);
             this.pnlDibujo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseMove);
             // 

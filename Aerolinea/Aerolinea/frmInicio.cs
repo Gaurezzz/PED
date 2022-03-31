@@ -14,10 +14,5 @@ namespace Aerolinea
         {
             InitializeComponent();
         }
-
-        private void ptrLogo_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
