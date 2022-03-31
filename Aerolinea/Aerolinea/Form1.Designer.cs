@@ -200,7 +200,6 @@
             this.pctAgregar.TabIndex = 2;
             this.pctAgregar.TabStop = false;
             this.pctAgregar.WaitOnLoad = true;
-            this.pctAgregar.Click += new System.EventHandler(this.pctAgregar_Click);
             // 
             // pctLogo1
             // 
