@@ -111,6 +111,7 @@ namespace Aerolinea
                 arista.Nombre = "arista" + nArista.ToString();
 
                 nArista++;
+                
 
                 arista.Peso = int.Parse(txtCosto.Text);
 
