@@ -112,7 +112,7 @@ namespace Aerolinea
             FontFamily ff = new FontFamily("Consolas");
             Font font = new Font(ff, 10);
 
-            Pen lapiz = new Pen(Color.Black, 2);
+            Pen lapiz = new Pen(Color.Crimson, 2);
 
             for (int i = 0; i < vertices.Length; i++)
             {
