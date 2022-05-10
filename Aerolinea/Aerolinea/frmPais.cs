@@ -26,6 +26,7 @@ namespace Aerolinea
             obj = grafo; //asigno el grafo global
             InitializeComponent();
             g = pnlDibujo.CreateGraphics(); //la imagen del apa sera nuestro lienzo
+            contadorlblA = obj.Num_aristas();
             
         }
 
@@ -85,6 +86,7 @@ namespace Aerolinea
                     }
                     obj.InsertarVertice(vertice);
                     lblvertices.Text = "VERTICES: " + contadorlblV;
+                    
 
                 }
             }

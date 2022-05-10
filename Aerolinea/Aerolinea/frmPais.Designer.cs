@@ -30,7 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblLocalizacion = new System.Windows.Forms.Label();
-            this.lblaristas = new System.Windows.Forms.Label();
             this.lblvertices = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.lblprueba = new System.Windows.Forms.Label();
@@ -46,7 +45,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lblLocalizacion);
-            this.panel1.Controls.Add(this.lblaristas);
             this.panel1.Controls.Add(this.lblvertices);
             this.panel1.Controls.Add(this.pnlDibujo);
             this.panel1.Controls.Add(this.lblprueba);
@@ -64,19 +62,10 @@
             this.lblLocalizacion.Size = new System.Drawing.Size(0, 15);
             this.lblLocalizacion.TabIndex = 10;
             // 
-            // lblaristas
-            // 
-            this.lblaristas.AutoSize = true;
-            this.lblaristas.Location = new System.Drawing.Point(12, 433);
-            this.lblaristas.Name = "lblaristas";
-            this.lblaristas.Size = new System.Drawing.Size(58, 15);
-            this.lblaristas.TabIndex = 7;
-            this.lblaristas.Text = "ARISTAS:";
-            // 
             // lblvertices
             // 
             this.lblvertices.AutoSize = true;
-            this.lblvertices.Location = new System.Drawing.Point(12, 408);
+            this.lblvertices.Location = new System.Drawing.Point(20, 421);
             this.lblvertices.Name = "lblvertices";
             this.lblvertices.Size = new System.Drawing.Size(69, 15);
             this.lblvertices.TabIndex = 6;
@@ -158,7 +147,6 @@
         private System.Windows.Forms.TextBox txtPais;
         public System.Windows.Forms.Label lblprueba;
         public System.Windows.Forms.PictureBox pnlDibujo;
-        private System.Windows.Forms.Label lblaristas;
         private System.Windows.Forms.Label lblvertices;
         private System.Windows.Forms.Label lblLocalizacion;
     }

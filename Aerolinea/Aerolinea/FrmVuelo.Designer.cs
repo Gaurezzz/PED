@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblLocalizacion = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.pnlEntrada = new System.Windows.Forms.Panel();
             this.btnUbicar = new System.Windows.Forms.PictureBox();
@@ -43,12 +44,21 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblLocalizacion);
             this.panel1.Controls.Add(this.pnlDibujo);
             this.panel1.Controls.Add(this.pnlEntrada);
             this.panel1.Location = new System.Drawing.Point(8, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 457);
             this.panel1.TabIndex = 4;
+            // 
+            // lblLocalizacion
+            // 
+            this.lblLocalizacion.AutoSize = true;
+            this.lblLocalizacion.Location = new System.Drawing.Point(646, 135);
+            this.lblLocalizacion.Name = "lblLocalizacion";
+            this.lblLocalizacion.Size = new System.Drawing.Size(0, 15);
+            this.lblLocalizacion.TabIndex = 8;
             // 
             // pnlDibujo
             // 
@@ -59,6 +69,7 @@
             this.pnlDibujo.TabIndex = 7;
             this.pnlDibujo.TabStop = false;
             this.pnlDibujo.VisibleChanged += new System.EventHandler(this.pnlDibujo_VisibleChanged_1);
+            this.pnlDibujo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseMove);
             // 
             // pnlEntrada
             // 
@@ -112,6 +123,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmVuelo";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).EndInit();
             this.pnlEntrada.ResumeLayout(false);
             this.pnlEntrada.PerformLayout();
@@ -129,5 +141,6 @@
         private System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.ComboBox cmbNodo2;
         private System.Windows.Forms.PictureBox btnUbicar;
+        private System.Windows.Forms.Label lblLocalizacion;
     }
 }

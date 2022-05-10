@@ -90,6 +90,24 @@ namespace Aerolinea
             }
             return n;
         }
+
+        public bool LocalizaAdyacente(string vertice, string nombre)
+        {
+            Nodo Act = LocalizaVertice(vertice);
+            int n = 0;
+            while (Act != null)
+            {
+                if (n == 0) { }
+                else
+                {
+                    if (Act.Nombre.Equals(nombre))
+                        return true;
+                }
+                Act = Act.VerticeAntecesor;
+                n++;
+            }
+            return false;
+        }
         
         //Metodo para insertar un vertice por su nombre
         public void InsertarVertice(Nodo v)

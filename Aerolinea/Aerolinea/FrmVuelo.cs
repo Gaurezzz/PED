@@ -128,5 +128,10 @@ namespace Aerolinea
                 MessageBox.Show("El costo debe ser un numero entero", "Error");
             }
         }
+
+        private void pnlDibujo_MouseMove(object sender, MouseEventArgs e)
+        {
+            lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);  //definimos la ubicacion del string
+        }
     }
 }
