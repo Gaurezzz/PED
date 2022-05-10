@@ -44,6 +44,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.lblLocalizacion);
             this.panel1.Controls.Add(this.pnlDibujo);
             this.panel1.Controls.Add(this.pnlEntrada);
@@ -62,10 +63,11 @@
             // 
             // pnlDibujo
             // 
-            this.pnlDibujo.Image = global::Aerolinea.Properties.Resources.mapabase1;
-            this.pnlDibujo.Location = new System.Drawing.Point(0, 118);
+            this.pnlDibujo.Image = global::Aerolinea.Properties.Resources.mundi;
+            this.pnlDibujo.Location = new System.Drawing.Point(129, 146);
             this.pnlDibujo.Name = "pnlDibujo";
-            this.pnlDibujo.Size = new System.Drawing.Size(749, 339);
+            this.pnlDibujo.Size = new System.Drawing.Size(487, 276);
+            this.pnlDibujo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pnlDibujo.TabIndex = 7;
             this.pnlDibujo.TabStop = false;
             this.pnlDibujo.VisibleChanged += new System.EventHandler(this.pnlDibujo_VisibleChanged_1);
@@ -102,6 +104,7 @@
             // 
             // cmbNodo2
             // 
+            this.cmbNodo2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNodo2.FormattingEnabled = true;
             this.cmbNodo2.Location = new System.Drawing.Point(30, 49);
             this.cmbNodo2.Name = "cmbNodo2";
@@ -110,6 +113,7 @@
             // 
             // cmbNodo1
             // 
+            this.cmbNodo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNodo1.FormattingEnabled = true;
             this.cmbNodo1.Location = new System.Drawing.Point(30, 20);
             this.cmbNodo1.Name = "cmbNodo1";
@@ -135,12 +139,12 @@
         #endregion
 
         public System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.PictureBox pnlDibujo;
         private System.Windows.Forms.Panel pnlEntrada;
         private System.Windows.Forms.ComboBox cmbNodo1;
         private System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.ComboBox cmbNodo2;
         private System.Windows.Forms.PictureBox btnUbicar;
         private System.Windows.Forms.Label lblLocalizacion;
+        public System.Windows.Forms.PictureBox pnlDibujo;
     }
 }

@@ -565,6 +565,7 @@ namespace Aerolinea
             int nodo = final;
             while (nodo != inicio)
             {
+                if (nodo == 0) break;
                 ruta.Add(nodo);
                 nodo = tabla[nodo, 2];
             }
@@ -578,10 +579,11 @@ namespace Aerolinea
             }
             else
             {
+                int i = 1;
                 foreach (int posicion in ruta)
                 {
-                    L.Items.Add("{" + VerticePorPos(posicion).Nombre + "}");
-                    L.Items.Add("  ↓↓  ");
+                    L.Items.Add("Ciudad " + i.ToString() + ": " + VerticePorPos(posicion).Nombre);
+                    i++;
                 }
                 T.Text = Convert.ToString(sumaDistancias);
             }

@@ -282,6 +282,48 @@
   <ItemGroup>
     <None Include="Resources\mapaSombreado.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mundi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crearNueva1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crearNueva2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crearNueva3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crearRuta1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crearRuta2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crearRuta3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cr1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cr2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cr3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\limpiar3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

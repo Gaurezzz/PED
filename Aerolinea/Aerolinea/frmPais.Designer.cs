@@ -31,19 +31,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblLocalizacion = new System.Windows.Forms.Label();
             this.lblvertices = new System.Windows.Forms.Label();
-            this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.lblprueba = new System.Windows.Forms.Label();
             this.pnlEntrada = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPais = new System.Windows.Forms.TextBox();
+            this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
             this.pnlEntrada.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.lblLocalizacion);
             this.panel1.Controls.Add(this.lblvertices);
             this.panel1.Controls.Add(this.pnlDibujo);
@@ -70,18 +71,6 @@
             this.lblvertices.Size = new System.Drawing.Size(69, 15);
             this.lblvertices.TabIndex = 6;
             this.lblvertices.Text = "VERTICES:";
-            // 
-            // pnlDibujo
-            // 
-            this.pnlDibujo.Image = global::Aerolinea.Properties.Resources.mapabase1;
-            this.pnlDibujo.Location = new System.Drawing.Point(0, 118);
-            this.pnlDibujo.Name = "pnlDibujo";
-            this.pnlDibujo.Size = new System.Drawing.Size(749, 339);
-            this.pnlDibujo.TabIndex = 5;
-            this.pnlDibujo.TabStop = false;
-            this.pnlDibujo.VisibleChanged += new System.EventHandler(this.pnlDibujo_VisibleChanged);
-            this.pnlDibujo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseDown);
-            this.pnlDibujo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseMove);
             // 
             // lblprueba
             // 
@@ -123,6 +112,19 @@
             this.txtPais.Text = "Introduzca el nombre del país a agregar";
             this.txtPais.Enter += new System.EventHandler(this.txtPais_Enter);
             // 
+            // pnlDibujo
+            // 
+            this.pnlDibujo.Image = global::Aerolinea.Properties.Resources.mundi;
+            this.pnlDibujo.Location = new System.Drawing.Point(129, 146);
+            this.pnlDibujo.Name = "pnlDibujo";
+            this.pnlDibujo.Size = new System.Drawing.Size(487, 276);
+            this.pnlDibujo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pnlDibujo.TabIndex = 5;
+            this.pnlDibujo.TabStop = false;
+            this.pnlDibujo.VisibleChanged += new System.EventHandler(this.pnlDibujo_VisibleChanged);
+            this.pnlDibujo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseDown);
+            this.pnlDibujo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDibujo_MouseMove);
+            // 
             // frmPais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -131,10 +133,10 @@
             this.Name = "frmPais";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).EndInit();
             this.pnlEntrada.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -30,14 +30,14 @@ namespace Aerolinea
 
             SolidBrush s = new SolidBrush(Color.Black);
             FontFamily ff = new FontFamily("Consolas");
-            Font font = new Font(ff, 15);
+            Font font = new Font(ff, 10);
 
-            Pen lapiz = new Pen(Color.Black, 3);
+            Pen lapiz = new Pen(Color.Black, 2);
 
             for (int i = 0; i < vertices.Length; i++)
             {
                 g.DrawArc(lapiz, new Rectangle(vertices[i].PosX, vertices[i].PosY, 5, 5), 0, 360);
-                g.DrawString(vertices[i].Nombre, font, s, vertices[i].PosX - 10, vertices[i].PosY - 30);
+                g.DrawString(vertices[i].Nombre, font, s, vertices[i].PosX - 10, vertices[i].PosY - 20);
             }
 
             for (int i = 0; i < aristas.Length; i++)
