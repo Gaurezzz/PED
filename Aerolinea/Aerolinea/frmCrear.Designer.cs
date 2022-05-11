@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnEliminarC = new System.Windows.Forms.Button();
+            this.cmbNodo3 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cantidad = new System.Windows.Forms.TextBox();
@@ -56,12 +58,14 @@
             this.panel1.Controls.Add(this.pnlEntrada);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(749, 457);
+            this.panel1.Size = new System.Drawing.Size(750, 458);
             this.panel1.TabIndex = 5;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Controls.Add(this.btnEliminarC);
+            this.panel2.Controls.Add(this.cmbNodo3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.cantidad);
@@ -71,12 +75,35 @@
             this.panel2.Size = new System.Drawing.Size(200, 339);
             this.panel2.TabIndex = 9;
             // 
+            // btnEliminarC
+            // 
+            this.btnEliminarC.BackColor = System.Drawing.Color.Turquoise;
+            this.btnEliminarC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEliminarC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminarC.Location = new System.Drawing.Point(111, 283);
+            this.btnEliminarC.Name = "btnEliminarC";
+            this.btnEliminarC.Size = new System.Drawing.Size(86, 44);
+            this.btnEliminarC.TabIndex = 15;
+            this.btnEliminarC.Text = "Eliminar Componente";
+            this.btnEliminarC.UseVisualStyleBackColor = false;
+            this.btnEliminarC.Click += new System.EventHandler(this.btnEliminarC_Click);
+            // 
+            // cmbNodo3
+            // 
+            this.cmbNodo3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNodo3.FormattingEnabled = true;
+            this.cmbNodo3.Location = new System.Drawing.Point(3, 292);
+            this.cmbNodo3.Name = "cmbNodo3";
+            this.cmbNodo3.Size = new System.Drawing.Size(102, 23);
+            this.cmbNodo3.TabIndex = 14;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(10, 285);
+            this.label2.Location = new System.Drawing.Point(10, 257);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 15);
             this.label2.TabIndex = 13;
@@ -87,7 +114,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 27);
+            this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 18);
             this.label1.TabIndex = 12;
@@ -95,7 +122,7 @@
             // 
             // cantidad
             // 
-            this.cantidad.Location = new System.Drawing.Point(81, 282);
+            this.cantidad.Location = new System.Drawing.Point(81, 254);
             this.cantidad.Name = "cantidad";
             this.cantidad.ReadOnly = true;
             this.cantidad.Size = new System.Drawing.Size(108, 21);
@@ -107,7 +134,7 @@
             this.listBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 15;
-            this.listBox.Location = new System.Drawing.Point(13, 52);
+            this.listBox.Location = new System.Drawing.Point(13, 35);
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(176, 210);
             this.listBox.TabIndex = 10;
@@ -204,5 +231,7 @@
         private System.Windows.Forms.TextBox cantidad;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbNodo3;
+        private System.Windows.Forms.Button btnEliminarC;
     }
 }

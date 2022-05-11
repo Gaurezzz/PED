@@ -12,6 +12,8 @@ namespace Aerolinea
     {
         Grafo obj;
         Graphics g;
+        public int contadorV = 0;
+        public int contadorA = 0;
         public frmCrear(ref Grafo grafo)
         {
             InitializeComponent();
@@ -72,9 +74,11 @@ namespace Aerolinea
 
             cmbNodo1.Items.Clear();
             cmbNodo2.Items.Clear();
+            cmbNodo3.Items.Clear();
 
             cmbNodo1.Items.AddRange(vertices);
             cmbNodo2.Items.AddRange(vertices);
+            cmbNodo3.Items.AddRange(vertices);
         }
 
         private void pnlDibujo_VisibleChanged(object sender, EventArgs e)
@@ -96,6 +100,40 @@ namespace Aerolinea
         {
             listBox.Items.Clear();
             cantidad.Text = "";
+        }
+
+        private void btnEliminarC_Click(object sender, EventArgs e)
+        {
+            string nombre = cmbNodo3.Text;
+            Nodo verOari = new Nodo();
+            verOari.Nombre = nombre;
+
+            if (obj.ExisteV(verOari))
+            {
+                obj.EliminarVertice(verOari);
+                string[] aristas = obj.ObtenerAristasString();
+                for(int i = obj.Num_aristas() - 1; i >= 0; i--)
+                {
+                    Nodo actual = obj.LocalizaArista(aristas[i]);
+                    if (actual.VerticeAdyacente.Nombre == nombre || actual.VerticeAntecesor.Nombre == nombre)
+                    {
+                        obj.EliminarArista(actual);
+                    }
+                }
+                contadorV--;
+            }
+            else if (obj.ExisteA(verOari))
+            {
+                obj.EliminarArista(verOari);
+                contadorA--;
+            }
+            else
+            {
+                MessageBox.Show("Este elemento no existe en el grafo", "ELEMENTO NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            actualizarNodos();
+            cmbNodo3.Text = "";
+            actualizarMapa();
         }
     }
 }
