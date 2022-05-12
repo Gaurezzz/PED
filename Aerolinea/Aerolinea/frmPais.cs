@@ -133,13 +133,16 @@ namespace Aerolinea
                 int sx = (fx + ix) / 2;
                 int sy = (fy + iy) / 2;
 
-                int m = sy / sx;
+                double m = (double)sy / sx;
+                double nm = -1 * (1 / m);
 
-                if (m > 1) sx += 10;
-                else sy += 10;
+                double d = 4;
+
+                int ry = (int)((-1 + Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy;
+                int rx = (int)Math.Sqrt((ry - sy)*(ry-sy) - d) + sx;
 
                 g.DrawLine(lapiz, ix, iy, fx, fy);
-                g.DrawString(aristas[i].Peso.ToString(), font, s, sx, sy);
+                g.DrawString(aristas[i].Peso.ToString(), font, s, rx, ry);
             }
         }
         //Cada vez que volvamos a aparecer el panel, debemos actualizar el grafico
