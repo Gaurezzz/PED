@@ -601,5 +601,16 @@ namespace Aerolinea
             }
         }
 
+        public List<Nodo> SQLVAEntry()
+        {
+            List<Nodo> nodos = new List<Nodo>();
+            nodos = ConexionSQL.GetNodos();
+            return nodos;
+            /*for (int i = 0; i < nodos.Count; i++)
+            {
+                InsertarVertice(nodos[i]);
+            }
+            Vertices = nodos.Count;*/
+        }
     }
 }

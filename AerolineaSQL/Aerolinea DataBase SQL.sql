@@ -6,7 +6,7 @@ CREATE DATABASE Aerolinea
 GO
 USE Aerolinea
 
-CREATE TABLE Vertice(
+CREATE TABLE Vertices(
 Fila int UNIQUE NOT NULL,
 Nombre varchar(50) NOT NULL PRIMARY KEY,
 posX int NOT NULL,

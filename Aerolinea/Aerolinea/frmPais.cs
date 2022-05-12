@@ -27,7 +27,6 @@ namespace Aerolinea
             InitializeComponent();
             g = pnlDibujo.CreateGraphics(); //la imagen del apa sera nuestro lienzo
             contadorlblA = obj.Num_aristas();
-            
         }
 
         private void txtPais_Enter(object sender, EventArgs e) //configuro el text box para que al ingresar, deje de dar instrucciones
@@ -149,6 +148,43 @@ namespace Aerolinea
         private void pnlDibujo_VisibleChanged(object sender, EventArgs e)
         {
             actualizarMapa();
+        }
+        public void SQLInicio()
+        {
+            try
+            {
+                List<Nodo> nodos = obj.SQLVAEntry();
+                for (int i = 0; i < nodos.Count; i++)
+                {
+                    Nodo vertice = new Nodo();
+                    vertice = nodos[i];
+                    vertice.ColorNodo = "black";
+                    vertice.Grosor = 3;
+                    vertice.Tamaño = 5;
+                    if (!obj.ExisteV(vertice))
+                    {
+                        contadorlblV += 1;
+                        txtPais.Text = "";
+                        txtPais.Text = "Vertice" + contadorlblV;
+                    }
+                    obj.InsertarVertice(vertice);
+                    lblvertices.Text = "VERTICES: " + contadorlblV;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("PROPIEDADES DEL VERTICE INVALIDAS:\n" +
+                    "\n" +
+                    "1.- Los vertices deben tener nombre \n" +
+                    "2.- La posición X es un número entero positvo (máximo 749)\n" +
+                    "3.- La posición Y es un número entero positivo (máximo 339)\n", "ERROR", MessageBoxButtons.OK);
+            }
+            actualizarMapa();
+        }
+
+        private void btnIniciarSQL_Click(object sender, EventArgs e)
+        {
+            SQLInicio();
         }
     }
 }

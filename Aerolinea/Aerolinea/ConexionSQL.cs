@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 
 namespace Aerolinea
@@ -249,24 +250,48 @@ namespace Aerolinea
                 conn.Close();
             }
         }
-        public Nodo GetNodo(int row)
+        public List<Nodo> GetNodos()
         {
             try
             {
-                Nodo nodo = new Nodo();
                 conn.Close();
                 conn.Open();
-                string getNodo;
-                getNodo = "SELECT * FROM Clientes";
-                da = new SqlDataAdapter(getNodo, conn);
-                da.SelectCommand.CommandType = CommandType.Text;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return nodo;
+                command = new SqlCommand("SELECT COUNT(*) FROM Vertices", conn);
+                Int32 count = (Int32)command.ExecuteScalar();
+                List<Nodo> nodos = new List<Nodo>();
+                for (int i = 0; i < count; i++)
+                {
+                    conn.Close();
+                    conn.Open();
+                    Nodo nodo = new Nodo();
+                    string buscarVertice;
+                    buscarVertice = "SELECT Fila,Nombre,posX,posY FROM Vertices WHERE Fila = @Fila";
+                    command = new SqlCommand(buscarVertice, conn);
+                    command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                    command.Parameters["@Fila"].Value = i;
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                    {
+
+                        nodo.Nombre = dr["Nombre"].ToString();
+                        nodo.PosX = int.Parse(dr["posX"].ToString());
+                        nodo.PosY = int.Parse(dr["posY"].ToString());
+                        nodo.ColorNodo = "black";
+                        nodo.Grosor = 3;
+                        nodo.Tamaño = 5;
+                        nodos.Add(nodo);
+                        dr.Close();
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+                return nodos;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                dr.Close();
+                conn.Close();
                 return null;
             }
         }
