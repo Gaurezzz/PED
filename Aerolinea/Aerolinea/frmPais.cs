@@ -197,10 +197,5 @@ namespace Aerolinea
             }
             actualizarMapa();
         }
-
-        private void btnIniciarSQL_Click(object sender, EventArgs e)
-        {
-            SQLInicio();
-        }
     }
 }

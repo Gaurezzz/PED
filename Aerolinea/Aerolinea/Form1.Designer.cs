@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlBarra = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pctMin = new System.Windows.Forms.PictureBox();
@@ -40,6 +41,7 @@
             this.pctPais = new System.Windows.Forms.PictureBox();
             this.pctAgregar = new System.Windows.Forms.PictureBox();
             this.pctLogo1 = new System.Windows.Forms.PictureBox();
+            this.SQLWaitTime = new System.Windows.Forms.Timer(this.components);
             this.pnlBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).BeginInit();
@@ -212,6 +214,11 @@
             this.pctLogo1.TabStop = false;
             this.pctLogo1.Click += new System.EventHandler(this.pctLogo1_Click);
             // 
+            // SQLWaitTime
+            // 
+            this.SQLWaitTime.Interval = 1000;
+            this.SQLWaitTime.Tick += new System.EventHandler(this.SQLWaitTime_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -221,6 +228,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.pnlBarra.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pctMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCerrar)).EndInit();
@@ -250,6 +258,7 @@
         private System.Windows.Forms.PictureBox pctVueloDirecto;
         private System.Windows.Forms.PictureBox pctPais;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer SQLWaitTime;
     }
 }
 

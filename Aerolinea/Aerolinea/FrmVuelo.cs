@@ -195,10 +195,5 @@ namespace Aerolinea
                 MessageBox.Show("El costo debe ser un numero entero positivo", "Error");
             }
         }
-
-        private void btnASQL_Click(object sender, EventArgs e)
-        {
-            SQLIniciar();
-        }
     }
 }
