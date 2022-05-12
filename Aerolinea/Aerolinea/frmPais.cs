@@ -132,13 +132,29 @@ namespace Aerolinea
                 int sx = (fx + ix) / 2;
                 int sy = (fy + iy) / 2;
 
-                double m = (double)sy / sx;
-                double nm = -1 * (1 / m);
+                int my = (iy - fy);
+                int mx = (ix - fx);
 
-                double d = 4;
+                int rx, ry;
 
-                int ry = (int)((-1 + Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy;
-                int rx = (int)Math.Sqrt((ry - sy)*(ry-sy) - d) + sx;
+                if (mx == 0)
+                {
+                    rx = ix + 10;
+                    ry = sy;
+                }
+                else
+                {
+
+                    double m = (double)my / mx;
+                    double nm = -1 * (1 / m);
+
+                    double d = 10;
+
+                    ry = (int)((-1 + Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy;
+                    if (ry < 0) ry = Math.Abs((int)((-1 - Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy);
+                    rx = (int)Math.Sqrt((ry - sy) * (ry - sy) - d) + sx;
+                    if (rx < 0) rx = (int)(Math.Sqrt((ry - sy) * (ry - sy) - d) + sx);
+                }
 
                 g.DrawLine(lapiz, ix, iy, fx, fy);
                 g.DrawString(aristas[i].Peso.ToString(), font, s, rx, ry);

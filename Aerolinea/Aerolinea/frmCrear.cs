@@ -37,7 +37,7 @@ namespace Aerolinea
             FontFamily ff = new FontFamily("Consolas");
             Font font = new Font(ff, 10);
 
-            Pen lapiz = new Pen(Color.Turquoise, 2);
+            Pen lapiz = new Pen(Color.IndianRed, 2);
 
             for (int i = 0; i < vertices.Length; i++)
             {
@@ -58,13 +58,32 @@ namespace Aerolinea
                 int sx = (fx + ix) / 2;
                 int sy = (fy + iy) / 2;
 
-                int m = sy / sx;
+                int my = (iy - fy);
+                int mx = (ix - fx);
 
-                if (m > 1) sx += 10;
-                else sy += 10;
+                int rx, ry;
+
+                if (mx == 0)
+                {
+                    rx = ix + 10;
+                    ry = sy;
+                }
+                else
+                {
+
+                    double m = (double)my / mx;
+                    double nm = -1 * (1 / m);
+
+                    double d = 10;
+
+                    ry = (int)((-1 + Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy;
+                    if (ry < 0) ry = Math.Abs((int)((-1 - Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy);
+                    rx = (int)Math.Sqrt((ry - sy) * (ry - sy) - d) + sx;
+                    if (rx < 0) rx = (int)(Math.Sqrt((ry - sy) * (ry - sy) - d) + sx);
+                }
 
                 g.DrawLine(lapiz, ix, iy, fx, fy);
-                g.DrawString(aristas[i].Peso.ToString(), font, s, sx, sy);
+                g.DrawString(aristas[i].Peso.ToString(), font, s, rx, ry);
             }
         }
         //metodo que permite crear la lista de opciones en los combo box
@@ -89,6 +108,19 @@ namespace Aerolinea
 
         private void btnCRuta_Click(object sender, EventArgs e)
         {
+            if (cmbNodo1.Text == "" || cmbNodo2.Text == "")
+            {
+                MessageBox.Show("Ingrese ambos lugares del recorrido");
+                return;
+            }
+
+            if (cmbNodo1.Text == cmbNodo2.Text)
+            {
+                MessageBox.Show("Los lugares deben ser diferentes");
+                return;
+            }
+
+
             listBox.Items.Clear();
             cantidad.Text = "";
             obj.A_Dijkstra(cmbNodo1.Text, cmbNodo2.Text, listBox, cantidad);

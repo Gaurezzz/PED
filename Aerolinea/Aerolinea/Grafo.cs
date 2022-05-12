@@ -381,6 +381,7 @@ namespace Aerolinea
             for (int i = 0; i < Na; i++)
             {
                 Nodo actual = LocalizaArista(buscados[i]);
+
                 if (ant.Nombre == actual.VerticeAntecesor.Nombre && ady.Nombre == actual.VerticeAdyacente.Nombre)
                     return actual;
                 else if (ady.Nombre == actual.VerticeAntecesor.Nombre && ant.Nombre == actual.VerticeAdyacente.Nombre)
@@ -542,7 +543,7 @@ namespace Aerolinea
                 {
 
                     //Buscamos a quien se dirige
-                    if (ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna )) != null)
+                    if (ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna)) != null)
                     {
                         //Calculamos la distancia
                         distancia = ExistaArista_Vertices(VerticePorPos(actual), VerticePorPos(columna)).Peso + tabla[actual, 1];
