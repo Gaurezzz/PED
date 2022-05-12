@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIniciarSQL = new System.Windows.Forms.Button();
             this.lblLocalizacion = new System.Windows.Forms.Label();
             this.lblvertices = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
@@ -36,7 +37,7 @@
             this.pnlEntrada = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPais = new System.Windows.Forms.TextBox();
-            this.btnIniciarSQL = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
             this.pnlEntrada.SuspendLayout();
@@ -56,6 +57,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 457);
             this.panel1.TabIndex = 3;
+            // 
+            // btnIniciarSQL
+            // 
+            this.btnIniciarSQL.Location = new System.Drawing.Point(649, 161);
+            this.btnIniciarSQL.Name = "btnIniciarSQL";
+            this.btnIniciarSQL.Size = new System.Drawing.Size(75, 23);
+            this.btnIniciarSQL.TabIndex = 11;
+            this.btnIniciarSQL.Text = "IniciarSQL";
+            this.btnIniciarSQL.UseVisualStyleBackColor = true;
+            this.btnIniciarSQL.Click += new System.EventHandler(this.btnIniciarSQL_Click);
             // 
             // lblLocalizacion
             // 
@@ -99,6 +110,7 @@
             // pnlEntrada
             // 
             this.pnlEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.pnlEntrada.Controls.Add(this.label1);
             this.pnlEntrada.Controls.Add(this.panel2);
             this.pnlEntrada.Location = new System.Drawing.Point(0, 0);
             this.pnlEntrada.Name = "pnlEntrada";
@@ -110,7 +122,7 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.txtPais);
             this.panel2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(23, 33);
+            this.panel2.Location = new System.Drawing.Point(23, 55);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(704, 40);
             this.panel2.TabIndex = 1;
@@ -127,15 +139,16 @@
             this.txtPais.Text = "Introduzca el nombre del país a agregar";
             this.txtPais.Enter += new System.EventHandler(this.txtPais_Enter);
             // 
-            // btnIniciarSQL
+            // label1
             // 
-            this.btnIniciarSQL.Location = new System.Drawing.Point(649, 161);
-            this.btnIniciarSQL.Name = "btnIniciarSQL";
-            this.btnIniciarSQL.Size = new System.Drawing.Size(75, 23);
-            this.btnIniciarSQL.TabIndex = 11;
-            this.btnIniciarSQL.Text = "IniciarSQL";
-            this.btnIniciarSQL.UseVisualStyleBackColor = true;
-            this.btnIniciarSQL.Click += new System.EventHandler(this.btnIniciarSQL_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(165, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(401, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ingrese el nombre del pais o ciudad que desea agregar:";
             // 
             // frmPais
             // 
@@ -147,6 +160,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).EndInit();
             this.pnlEntrada.ResumeLayout(false);
+            this.pnlEntrada.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -164,5 +178,6 @@
         private System.Windows.Forms.Label lblvertices;
         private System.Windows.Forms.Label lblLocalizacion;
         private System.Windows.Forms.Button btnIniciarSQL;
+        private System.Windows.Forms.Label label1;
     }
 }

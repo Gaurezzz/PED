@@ -42,6 +42,7 @@
             this.btnCRuta = new System.Windows.Forms.PictureBox();
             this.cmbNodo2 = new System.Windows.Forms.ComboBox();
             this.cmbNodo1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
@@ -153,6 +154,7 @@
             // pnlEntrada
             // 
             this.pnlEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.pnlEntrada.Controls.Add(this.label3);
             this.pnlEntrada.Controls.Add(this.btnLimpiar);
             this.pnlEntrada.Controls.Add(this.btnCRuta);
             this.pnlEntrada.Controls.Add(this.cmbNodo2);
@@ -186,7 +188,7 @@
             // 
             this.cmbNodo2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNodo2.FormattingEnabled = true;
-            this.cmbNodo2.Location = new System.Drawing.Point(30, 68);
+            this.cmbNodo2.Location = new System.Drawing.Point(30, 81);
             this.cmbNodo2.Name = "cmbNodo2";
             this.cmbNodo2.Size = new System.Drawing.Size(427, 23);
             this.cmbNodo2.TabIndex = 1;
@@ -195,10 +197,21 @@
             // 
             this.cmbNodo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNodo1.FormattingEnabled = true;
-            this.cmbNodo1.Location = new System.Drawing.Point(30, 30);
+            this.cmbNodo1.Location = new System.Drawing.Point(30, 52);
             this.cmbNodo1.Name = "cmbNodo1";
             this.cmbNodo1.Size = new System.Drawing.Size(427, 23);
             this.cmbNodo1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(27, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(392, 18);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Seleccione la ciudad de partida y la ciudad de llegada: ";
             // 
             // frmCrear
             // 
@@ -211,6 +224,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).EndInit();
             this.pnlEntrada.ResumeLayout(false);
+            this.pnlEntrada.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLimpiar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCRuta)).EndInit();
             this.ResumeLayout(false);
@@ -233,5 +247,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbNodo3;
         private System.Windows.Forms.Button btnEliminarC;
+        private System.Windows.Forms.Label label3;
     }
 }

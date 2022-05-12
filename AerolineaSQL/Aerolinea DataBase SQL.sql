@@ -1,6 +1,6 @@
 USE master
 GO
-DROP DATABASE if EXISTS Aerolinea
+DROP DATABASE Aerolinea
 GO
 CREATE DATABASE Aerolinea
 GO

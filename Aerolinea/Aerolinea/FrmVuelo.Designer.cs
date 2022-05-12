@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnASQL = new System.Windows.Forms.Button();
             this.lblLocalizacion = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.pnlEntrada = new System.Windows.Forms.Panel();
@@ -36,7 +37,6 @@
             this.txtCosto = new System.Windows.Forms.TextBox();
             this.cmbNodo2 = new System.Windows.Forms.ComboBox();
             this.cmbNodo1 = new System.Windows.Forms.ComboBox();
-            this.btnASQL = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
             this.pnlEntrada.SuspendLayout();
@@ -54,6 +54,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 457);
             this.panel1.TabIndex = 4;
+            // 
+            // btnASQL
+            // 
+            this.btnASQL.Location = new System.Drawing.Point(649, 157);
+            this.btnASQL.Name = "btnASQL";
+            this.btnASQL.Size = new System.Drawing.Size(75, 23);
+            this.btnASQL.TabIndex = 9;
+            this.btnASQL.Text = "IniciarSQL";
+            this.btnASQL.UseVisualStyleBackColor = true;
+            this.btnASQL.Click += new System.EventHandler(this.btnASQL_Click);
             // 
             // lblLocalizacion
             // 
@@ -121,16 +131,6 @@
             this.cmbNodo1.Name = "cmbNodo1";
             this.cmbNodo1.Size = new System.Drawing.Size(522, 23);
             this.cmbNodo1.TabIndex = 0;
-            // 
-            // btnASQL
-            // 
-            this.btnASQL.Location = new System.Drawing.Point(653, 146);
-            this.btnASQL.Name = "btnASQL";
-            this.btnASQL.Size = new System.Drawing.Size(75, 23);
-            this.btnASQL.TabIndex = 9;
-            this.btnASQL.Text = "IniciarSQL";
-            this.btnASQL.UseVisualStyleBackColor = true;
-            this.btnASQL.Click += new System.EventHandler(this.btnASQL_Click);
             // 
             // FrmVuelo
             // 
