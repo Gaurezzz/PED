@@ -18,6 +18,9 @@ namespace Aerolinea
         private int Nv; //Numero de vertices
         private int Na; //Numero de aristas
 
+        //SQL
+        ConexionSQL ConexionSQL=new ConexionSQL();
+
         //Constructor
         public Grafo()
         {
@@ -135,6 +138,7 @@ namespace Aerolinea
                     V_final = nuevo;
                 }
                 Nv++;
+                //ConexionSQL.AgregarNodo(nuevo);
             }
         }
 
@@ -310,6 +314,7 @@ namespace Aerolinea
             }
             if (encontrado == true)
                 Nv--;
+            ConexionSQL.EliminarVertice(v.Nombre);
         }
 
         //Metodo para eliminar una arista dado su nombre
@@ -345,9 +350,10 @@ namespace Aerolinea
                 if (encontrado == true)
                     Na--;
             }
+            ConexionSQL.EliminarArista(a.Nombre);
         }
 
-       
+
         //Metodo que comprueba que exista una arista
         public bool ExisteA(Nodo a)
         {
@@ -391,10 +397,13 @@ namespace Aerolinea
                 lbxComponentes.Items.Clear();
                 Nodo q = V_inicial;
                 lbxComponentes.Items.Add("VERTICES:");
+                int SQLRow=0;
                 while (q != null)
                 {
                     lbxComponentes.Items.Add("*Vertice: " + q.Nombre + "\t Pos(x): " + q.PosX + "\t Pos(y): " + q.PosY);
+                    ConexionSQL.AgregarVertice(q, SQLRow);
                     q = q.Siguiente;
+                    SQLRow++;
                 }
             }
         }
@@ -407,10 +416,13 @@ namespace Aerolinea
                 lbxComponentes.Items.Clear();
                 Nodo q = A_inicial;
                 lbxComponentes.Items.Add("ARISTAS:");
+                int SQLRow = 0;
                 while (q != null)
                 {
                     lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
+                    ConexionSQL.AgregarArista(q, SQLRow);
                     q = q.Siguiente;
+                    SQLRow++;
                 }
             }
         }

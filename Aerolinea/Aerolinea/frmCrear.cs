@@ -125,6 +125,7 @@ namespace Aerolinea
             else if (obj.ExisteA(verOari))
             {
                 obj.EliminarArista(verOari);
+
                 contadorA--;
             }
             else

@@ -52,71 +52,42 @@ namespace Aerolinea
                 estado = false;
             }
         }
-        public void AgregarCliente(Cliente cliente)
+        public void AgregarVertice(Nodo nodo,int SQLRow)
         {
             try
             {
-                string insertarCliente;
-                insertarCliente = "INSERT INTO Clientes(DUI,Nombre,Apellido,Edad)";
-                insertarCliente += "VALUES(@Dui,@nombre,@apellido,@edad)";
-                command = new SqlCommand(insertarCliente, conn);
-                command.Parameters.Add(new SqlParameter("@DUI", SqlDbType.VarChar));
-                command.Parameters["@DUI"].Value = cliente.DUI;
-                command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
-                command.Parameters["@Nombre"].Value = cliente.Nombre;
-                command.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
-                command.Parameters["@Apellido"].Value = cliente.Apellido;
-                command.Parameters.Add(new SqlParameter("@Edad", SqlDbType.VarChar));
-                command.Parameters["@Edad"].Value = cliente.Edad;
-                command.ExecuteNonQuery();
-                MessageBox.Show("Añadido Exitosamente", "Cliente Agregado");
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-                conn.Close();
-            }
-        }
-        public void EliminarCliente(string DUI)
-        {
-            try
-            {
-                string eliminarCliente;
-                eliminarCliente = "DELETE FROM Clientes WHERE DUI = @DUI";
-                command = new SqlCommand(eliminarCliente, conn);
-                command.Parameters.AddWithValue("@DUI", DUI);
-                int affRows = command.ExecuteNonQuery();
-                MessageBox.Show("Elimnado Exitosamente\n" + "Filas Afectadas {affRows}", "Eliminacion Exitosa");
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-                conn.Close();
-            }
-        }
-        public void BuscarCliente(string DUI, out Cliente cliente)
-        {
-            cliente = new Cliente();
-            try
-            {
-                string buscarCliente;
-                buscarCliente = "SELECT DUI,Nombre,Apellido,Edad FROM Clientes WHERE DUI = @DUI";
-                command = new SqlCommand(buscarCliente, conn);
-                command.Parameters.Add(new SqlParameter("@DUI", SqlDbType.VarChar));
-                command.Parameters["@DUI"].Value=DUI;
-                dr=command.ExecuteReader();
-                if (dr.Read())
+                bool añadido=false;
+
+                while (añadido!=true)
                 {
-                    cliente.Nombre = dr["Nombre"].ToString();
-                    cliente.Apellido = dr["Apellido"].ToString();
-                    cliente.Edad = dr["Edad"].ToString();
+                    conn.Close();
+                    conn.Open();
+                    if (!ExisteVertice(nodo.Nombre))
+                    {
+                        string insertarNodo;
+                        insertarNodo = "INSERT INTO Vertice(Fila,Nombre,posX,posY)";
+                        insertarNodo += "VALUES(@Fila,@Nombre,@posX,@posY)";
+                        command = new SqlCommand(insertarNodo, conn);
+                        command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                        command.Parameters["@Fila"].Value = SQLRow;
+                        command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                        command.Parameters["@Nombre"].Value = nodo.Nombre;
+                        command.Parameters.Add(new SqlParameter("@posX", SqlDbType.Int));
+                        command.Parameters["@posX"].Value = nodo.PosX;
+                        command.Parameters.Add(new SqlParameter("@posY", SqlDbType.Int));
+                        command.Parameters["@posY"].Value = nodo.PosY;
+                        command.ExecuteNonQuery();
+                        añadido = true;
+                    }
+                    else
+                    {
+                        string eliminarCliente;
+                        eliminarCliente = "DELETE FROM Vertice WHERE Nombre = @Nombre";
+                        command = new SqlCommand(eliminarCliente, conn);
+                        command.Parameters.AddWithValue("@Nombre", nodo.Nombre);
+                        int affRows = command.ExecuteNonQuery();
+                    }
                 }
-                else
-                    MessageBox.Show("No exite cliente con el DUI ingresado", "Cliente no encontrado");
-                dr.Close();
-                conn.Close();
             }
             catch (Exception ex)
             {
@@ -124,6 +95,131 @@ namespace Aerolinea
                 conn.Close();
             }
         }
+        public void AgregarArista(Nodo arista,int SQLRow)
+        {
+            try
+            {
+                bool añadido = false;
+
+                while (añadido != true)
+                {
+                    conn.Close();
+                    conn.Open();
+                    if (!ExisteArista(arista.Nombre))
+                    {
+                        string insertarNodo;
+                        insertarNodo = "INSERT INTO Aristas(Fila,Nombre,peso,VerticeAntecesor,VerticeAdyacente)";
+                        insertarNodo += "VALUES(@Fila,@Nombre,@peso,@VerticeAntecesor,@VerticeAdyacente)";
+                        command = new SqlCommand(insertarNodo, conn);
+                        command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                        command.Parameters["@Fila"].Value = SQLRow;
+                        command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                        command.Parameters["@Nombre"].Value = arista.Nombre;
+                        command.Parameters.Add(new SqlParameter("@peso", SqlDbType.Int));
+                        command.Parameters["@peso"].Value = arista.Peso;
+                        command.Parameters.Add(new SqlParameter("@VerticeAntecesor", SqlDbType.VarChar));
+                        command.Parameters["@VerticeAntecesor"].Value = arista.VerticeAntecesor.Nombre;
+                        command.Parameters.Add(new SqlParameter("@VerticeAdyacente", SqlDbType.VarChar));
+                        command.Parameters["@VerticeAdyacente"].Value = arista.VerticeAdyacente.Nombre;
+                        command.ExecuteNonQuery();
+                        añadido = true;
+                    }
+                    else
+                    {
+                        string eliminarCliente;
+                        eliminarCliente = "DELETE FROM Aristas WHERE Nombre = @Nombre";
+                        command = new SqlCommand(eliminarCliente, conn);
+                        command.Parameters.AddWithValue("@Nombre", arista.Nombre);
+                        int affRows = command.ExecuteNonQuery();
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                conn.Close();
+            }
+        }
+        //Comprueba si existe un vertice con el mismo nombre en la base de datos
+        public bool ExisteVertice(string Nombre)
+        {
+            string buscarVertice;
+            buscarVertice = "SELECT Nombre FROM Vertice WHERE Nombre = @Nombre";
+            command = new SqlCommand(buscarVertice, conn);
+            command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+            command.Parameters["@Nombre"].Value = Nombre;
+            dr = command.ExecuteReader();
+            if (!dr.Read())
+            {
+                dr.Close();
+                return false;
+            }
+            dr.Close();
+            return true;
+        }
+        //Comprueba si existe una arista con el mismo nombre en la base de datos
+        public bool ExisteArista(string Nombre)
+        {
+            string buscarArista;
+            buscarArista = "SELECT Nombre FROM Aristas WHERE Nombre = @Nombre";
+            command = new SqlCommand(buscarArista, conn);
+            command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+            command.Parameters["@Nombre"].Value = Nombre;
+            dr = command.ExecuteReader();
+            if (!dr.Read())
+            {
+                dr.Close();
+                return false;
+            }
+            dr.Close();
+            return true;
+        }
+        //Eliminar vertice
+        public void EliminarVertice(string NombreVertice)
+        {
+            try
+            {
+                if (ExisteVertice(NombreVertice))
+                {
+                    conn.Close();
+                    conn.Open();
+                    string eliminarCliente;
+                    eliminarCliente = "DELETE FROM Vertice WHERE Nombre = @Nombre";
+                    command = new SqlCommand(eliminarCliente, conn);
+                    command.Parameters.AddWithValue("@Nombre", NombreVertice);
+                    int affRows = command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error SQL");
+            }
+        }
+        //Eliminar arista
+        public void EliminarArista(string NombreArista)
+        {
+            try
+            {
+                if (ExisteArista(NombreArista))
+                {
+                    conn.Close();
+                    conn.Open();
+                    string eliminarCliente;
+                    eliminarCliente = "DELETE FROM Aristas WHERE Nombre = @Nombre";
+                    command = new SqlCommand(eliminarCliente, conn);
+                    command.Parameters.AddWithValue("@Nombre", NombreArista);
+                    int affRows = command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error SQL");
+            }
+        }
+
         public void ModificarCliente(Cliente cliente)
         {
             try
@@ -151,6 +247,27 @@ namespace Aerolinea
             {
                 MessageBox.Show(ex.Message, "Error");
                 conn.Close();
+            }
+        }
+        public Nodo GetNodo(int row)
+        {
+            try
+            {
+                Nodo nodo = new Nodo();
+                conn.Close();
+                conn.Open();
+                string getNodo;
+                getNodo = "SELECT * FROM Clientes";
+                da = new SqlDataAdapter(getNodo, conn);
+                da.SelectCommand.CommandType = CommandType.Text;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return nodo;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
         public DataTable MostrarClientes()
