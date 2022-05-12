@@ -180,15 +180,24 @@ namespace Aerolinea
                     vertice.Tamaño = 5;
                     if (!obj.ExisteV(vertice))
                     {
-                        if (nodos.Count-1==i)
+                        try
                         {
-                            contadorlblV = int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) + 1;
-                            txtPais.Text = "";
-                            txtPais.Text = "Vertice" + contadorlblV;
+                            if (nodos.Count - 1 == i && int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) > nodos.Count)
+                            {
+                                contadorlblV = int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) + 1;
+                                txtPais.Text = "";
+                                txtPais.Text = "Vertice" + contadorlblV;
+                            }
+                            else
+                            {
+                                contadorlblV = nodos.Count;
+                                txtPais.Text = "";
+                                txtPais.Text = "Vertice" + contadorlblV;
+                            }
                         }
-                        else
+                        catch
                         {
-                            contadorlblV += 1;
+                            contadorlblV = nodos.Count;
                             txtPais.Text = "";
                             txtPais.Text = "Vertice" + contadorlblV;
                         }
