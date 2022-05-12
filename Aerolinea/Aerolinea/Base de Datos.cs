@@ -41,19 +41,19 @@ namespace Aerolinea
             cliente.Edad = nudEdad.Text;
 
             Conectar();
-            ConexionSQL.AgregarCliente(cliente);
+            //ConexionSQL.AgregarCliente(cliente);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Conectar();
-            ConexionSQL.EliminarCliente(txtEDui.Text);
+            //ConexionSQL.EliminarCliente(txtEDui.Text);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Conectar();
-            ConexionSQL.BuscarCliente(txtBDui.Text, out cliente);
+            //ConexionSQL.BuscarCliente(txtBDui.Text, out cliente);
 
             txtBNombre.Text = cliente.Nombre;
             txtBApellido.Text = cliente.Apellido;
@@ -62,7 +62,7 @@ namespace Aerolinea
         private void btnMBuscar_Click(object sender, EventArgs e)
         {
             Conectar();
-            ConexionSQL.BuscarCliente(txtMDui.Text, out cliente);
+            //ConexionSQL.BuscarCliente(txtMDui.Text, out cliente);
 
             txtMNombre.Text = cliente.Nombre;
             txtMApellido.Text = cliente.Apellido;

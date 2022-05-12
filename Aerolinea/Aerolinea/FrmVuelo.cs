@@ -53,13 +53,32 @@ namespace Aerolinea
                 int sx = (fx + ix) / 2;
                 int sy = (fy + iy) / 2;
 
-                int m = sy / sx;
+                int my = (iy - fy);
+                int mx = (ix - fx);
 
-                if (m > 1) sx += 10;
-                else sy += 10;
+                int rx, ry;
+
+                if (mx == 0)
+                {
+                    rx = ix + 10;
+                    ry = sy;
+                }
+                else
+                {
+
+                    double m = (double)my / mx;
+                    double nm = -1 * (1 / m);
+
+                    double d = 10;
+
+                    ry = (int)((-1 + Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy;
+                    if (ry < 0) ry = Math.Abs((int)((-1 - Math.Sqrt(1 + 4 * nm * nm * d * d)) / (2 * nm)) - sy);
+                    rx = (int)Math.Sqrt((ry - sy) * (ry - sy) - d) + sx;
+                    if (rx < 0) rx = (int)(Math.Sqrt((ry - sy) * (ry - sy) - d) + sx);
+                }
 
                 g.DrawLine(lapiz, ix, iy, fx, fy);
-                g.DrawString(aristas[i].Peso.ToString(), font, s, sx, sy);
+                g.DrawString(aristas[i].Peso.ToString(), font, s, rx, ry);
             }
         }
         //metodo que permite crear la lista de opciones en los combo box
@@ -102,6 +121,12 @@ namespace Aerolinea
                 return ;
             }
 
+            if (int.Parse(txtCosto.Text) < 0)
+            {
+                MessageBox.Show("El costo debe ser un numero entero positivo", "Error");
+                return;
+            }
+
             try
             {
                 Nodo arista = new Nodo();
@@ -125,7 +150,7 @@ namespace Aerolinea
             }
             catch (Exception)
             {
-                MessageBox.Show("El costo debe ser un numero entero", "Error");
+                MessageBox.Show("El costo debe ser un numero entero positivo", "Error");
             }
         }
 
@@ -133,5 +158,6 @@ namespace Aerolinea
         {
             lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);  //definimos la ubicacion del string
         }
+
     }
 }
