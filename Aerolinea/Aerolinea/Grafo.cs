@@ -545,21 +545,21 @@ namespace Aerolinea
                 T.Text = Convert.ToString(sumaDistancias);
             }
         }
-
+        //Metodo de entrada de los vertices de la base de datos
         public List<Nodo> SQLVEntry()
         {
             List<Nodo> nodos = new List<Nodo>();
             nodos = conexionSQL.GetNodos();
             return nodos;
         }
-
+        //Metodo de entrada de las aristas de la base de datos
         public List<Nodo> SQLAEntry()
         {
             List<Nodo> aristas=new List<Nodo>();
             aristas = conexionSQL.GetAristas();
             return aristas;
         }
-
+        //Exportacion de los datos de vertices y aristas a la base de datos
         public bool GuardarDatosSQL()
         {
             try

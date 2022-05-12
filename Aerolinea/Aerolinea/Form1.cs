@@ -346,14 +346,14 @@ namespace Aerolinea
         {
             this.ActiveControl = pnlBarra;
         }
-
+        //Importa los datos de SQL a el programa un segundo despues de iniciarse el form
         private void SQLWaitTime_Tick(object sender, EventArgs e)
         {
             frmPais.SQLInicio();
             frmVuelo.SQLIniciar();
             SQLWaitTime.Enabled = false;
         }
-
+        //Exporta los datos a SQL antes de cerrarse el programa
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             obj.GuardarDatosSQL();

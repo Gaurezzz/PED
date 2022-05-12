@@ -21,7 +21,7 @@ namespace Aerolinea
         private bool estado;
         public bool Estado { get { return estado; } }
 
-        //Metodo que conecta con la base de datos
+        //Metodo constructor que conecta con la base de datos
         public ConexionSQL()
         {
             cnn.ConnectionString = @"Provider=sqloledb; Data Source=local;Integrated Security=true;Initial catalog=Aerolinea;server=(local);UseAffectedRows=True";
