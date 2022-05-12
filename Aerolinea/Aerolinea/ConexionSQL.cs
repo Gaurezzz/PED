@@ -181,10 +181,10 @@ namespace Aerolinea
         {
             try
             {
+                conn.Close();
+                conn.Open();
                 if (ExisteVertice(NombreVertice))
                 {
-                    conn.Close();
-                    conn.Open();
                     string eliminarCliente;
                     eliminarCliente = "DELETE FROM Vertices WHERE Nombre = @Nombre";
                     command = new SqlCommand(eliminarCliente, conn);
@@ -203,10 +203,10 @@ namespace Aerolinea
         {
             try
             {
+                conn.Close();
+                conn.Open();
                 if (ExisteArista(NombreArista))
                 {
-                    conn.Close();
-                    conn.Open();
                     string eliminarCliente;
                     eliminarCliente = "DELETE FROM Aristas WHERE Nombre = @Nombre";
                     command = new SqlCommand(eliminarCliente, conn);
@@ -310,7 +310,7 @@ namespace Aerolinea
                     conn.Open();
                     Nodo nodo = new Nodo();
                     string buscarVertice;
-                    buscarVertice = "SELECT Fila,Nombre,posX,posY FROM Aristas WHERE Fila = @Fila";
+                    buscarVertice = "SELECT Fila,Nombre,Peso,VerticeAntecesor,VerticeAdyacente FROM Aristas WHERE Fila = @Fila";
                     command = new SqlCommand(buscarVertice, conn);
                     command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
                     command.Parameters["@Fila"].Value = i;
@@ -319,11 +319,13 @@ namespace Aerolinea
                     {
 
                         nodo.Nombre = dr["Nombre"].ToString();
-                        nodo.PosX = int.Parse(dr["posX"].ToString());
-                        nodo.PosY = int.Parse(dr["posY"].ToString());
-                        nodo.ColorNodo = "black";
-                        nodo.Grosor = 3;
-                        nodo.Tamaño = 5;
+                        nodo.Peso = int.Parse(dr["Peso"].ToString());
+                        Nodo verticeantecesor = new Nodo();
+                        verticeantecesor.Nombre = dr["VerticeAntecesor"].ToString();
+                        nodo.VerticeAntecesor = verticeantecesor;
+                        Nodo verticeadyacente = new Nodo();
+                        verticeadyacente.Nombre = dr["VerticeAdyacente"].ToString();
+                        nodo.VerticeAdyacente = verticeadyacente;
                         nodos.Add(nodo);
                         dr.Close();
                     }

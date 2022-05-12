@@ -153,7 +153,7 @@ namespace Aerolinea
         {
             try
             {
-                List<Nodo> nodos = obj.SQLVAEntry();
+                List<Nodo> nodos = obj.SQLVEntry();
                 for (int i = 0; i < nodos.Count; i++)
                 {
                     Nodo vertice = new Nodo();
