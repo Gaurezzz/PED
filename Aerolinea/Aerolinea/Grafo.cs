@@ -420,7 +420,8 @@ namespace Aerolinea
                 int SQLRow = 0;
                 while (q != null)
                 {
-                    lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
+                    lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," 
+                    + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
                     ConexionSQL.AgregarArista(q, SQLRow);
                     q = q.Siguiente;
                     SQLRow++;
