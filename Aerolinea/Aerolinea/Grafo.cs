@@ -142,7 +142,56 @@ namespace Aerolinea
             }
         }
 
-  
+        //Metodo para insertar una arista dirigida dado dos vertices
+        public void InsertarAristaDirigida(Nodo arista, Nodo a, Nodo s)
+        {
+            if (ExisteA(arista))
+            {
+                MessageBox.Show("Ya existe esta arista", "ATENCION", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Nodo A = LocalizaVertice(s.Nombre);
+                Nodo nuevoS = new Nodo();
+                nuevoS.Nombre = a.Nombre;
+                if (Adyacentes(A) == 0)
+                    a.VerticeAdyacente = nuevoS;
+                else
+                {
+                    nuevoS.VerticeAdyacente = A.VerticeAdyacente;
+                    A.VerticeAdyacente = nuevoS;
+                }
+                Nodo S = LocalizaVertice(a.Nombre);
+                Nodo nuevoA = new Nodo();
+                nuevoA.Nombre = s.Nombre;
+                if (Antecesores(S) == 0)
+                    S.VerticeAntecesor = nuevoA;
+                else
+                {
+                    nuevoA.VerticeAntecesor = S.VerticeAntecesor;
+                    S.VerticeAntecesor = nuevoA;
+                }
+
+                //Insertando la arista en la lista de las aristas
+                Nodo nuevo = new Nodo();
+                nuevo = arista;
+                if (A_inicial == null)
+                {
+                    A_inicial = nuevo;
+                    A_inicial.Siguiente = null;
+                    A_inicial.Anterior = null;
+                    A_final = A_inicial;
+                }
+                else
+                {
+                    A_final.Siguiente = nuevo;
+                    nuevo.Siguiente = null;
+                    nuevo.Anterior = A_final;
+                    A_final = nuevo;
+                }
+                Na++;
+            }
+        }
 
         //Metodo para insertar una arista(no dirigida) dado dos vertices
         public void InsertarArista(Nodo arista, Nodo a, Nodo s)
@@ -546,7 +595,6 @@ namespace Aerolinea
                 foreach (int posicion in ruta)
                 {
                     L.Items.Add("Ciudad " + i.ToString() + ": " + VerticePorPos(posicion).Nombre);
-                    L.Items.Add("  ↓↓  ");
                     i++;
                 }
                 T.Text = Convert.ToString(sumaDistancias);

@@ -66,7 +66,7 @@ namespace Aerolinea
                     if (!ExisteVertice(nodo.Nombre))
                     {
                         string insertarNodo;
-                        insertarNodo = "INSERT INTO Vertice(Fila,Nombre,posX,posY)";
+                        insertarNodo = "INSERT INTO Vertices(Fila,Nombre,posX,posY)";
                         insertarNodo += "VALUES(@Fila,@Nombre,@posX,@posY)";
                         command = new SqlCommand(insertarNodo, conn);
                         command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
@@ -83,7 +83,7 @@ namespace Aerolinea
                     else
                     {
                         string eliminarCliente;
-                        eliminarCliente = "DELETE FROM Vertice WHERE Nombre = @Nombre";
+                        eliminarCliente = "DELETE FROM Vertices WHERE Nombre = @Nombre";
                         command = new SqlCommand(eliminarCliente, conn);
                         command.Parameters.AddWithValue("@Nombre", nodo.Nombre);
                         int affRows = command.ExecuteNonQuery();
@@ -146,7 +146,7 @@ namespace Aerolinea
         public bool ExisteVertice(string Nombre)
         {
             string buscarVertice;
-            buscarVertice = "SELECT Nombre FROM Vertice WHERE Nombre = @Nombre";
+            buscarVertice = "SELECT Nombre FROM Vertices WHERE Nombre = @Nombre";
             command = new SqlCommand(buscarVertice, conn);
             command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
             command.Parameters["@Nombre"].Value = Nombre;
@@ -186,7 +186,7 @@ namespace Aerolinea
                     conn.Close();
                     conn.Open();
                     string eliminarCliente;
-                    eliminarCliente = "DELETE FROM Vertice WHERE Nombre = @Nombre";
+                    eliminarCliente = "DELETE FROM Vertices WHERE Nombre = @Nombre";
                     command = new SqlCommand(eliminarCliente, conn);
                     command.Parameters.AddWithValue("@Nombre", NombreVertice);
                     int affRows = command.ExecuteNonQuery();
@@ -266,6 +266,51 @@ namespace Aerolinea
                     Nodo nodo = new Nodo();
                     string buscarVertice;
                     buscarVertice = "SELECT Fila,Nombre,posX,posY FROM Vertices WHERE Fila = @Fila";
+                    command = new SqlCommand(buscarVertice, conn);
+                    command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                    command.Parameters["@Fila"].Value = i;
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                    {
+
+                        nodo.Nombre = dr["Nombre"].ToString();
+                        nodo.PosX = int.Parse(dr["posX"].ToString());
+                        nodo.PosY = int.Parse(dr["posY"].ToString());
+                        nodo.ColorNodo = "black";
+                        nodo.Grosor = 3;
+                        nodo.Tamaño = 5;
+                        nodos.Add(nodo);
+                        dr.Close();
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+                return nodos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                dr.Close();
+                conn.Close();
+                return null;
+            }
+        }
+        public List<Nodo> GetAristas()
+        {
+            try
+            {
+                conn.Close();
+                conn.Open();
+                command = new SqlCommand("SELECT COUNT(*) FROM Aristas", conn);
+                Int32 count = (Int32)command.ExecuteScalar();
+                List<Nodo> nodos = new List<Nodo>();
+                for (int i = 0; i < count; i++)
+                {
+                    conn.Close();
+                    conn.Open();
+                    Nodo nodo = new Nodo();
+                    string buscarVertice;
+                    buscarVertice = "SELECT Fila,Nombre,posX,posY FROM Aristas WHERE Fila = @Fila";
                     command = new SqlCommand(buscarVertice, conn);
                     command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
                     command.Parameters["@Fila"].Value = i;
