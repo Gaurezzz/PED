@@ -396,12 +396,10 @@ namespace Aerolinea
                 lbxComponentes.Items.Clear();
                 Nodo q = V_inicial;
                 lbxComponentes.Items.Add("VERTICES:");
-                int SQLRow=0;
                 while (q != null)
                 {
                     lbxComponentes.Items.Add("*Vertice: " + q.Nombre + "\t Pos(x): " + q.PosX + "\t Pos(y): " + q.PosY);
                     q = q.Siguiente;
-                    SQLRow++;
                 }
             }
         }
@@ -414,14 +412,12 @@ namespace Aerolinea
                 lbxComponentes.Items.Clear();
                 Nodo q = A_inicial;
                 lbxComponentes.Items.Add("ARISTAS:");
-                int SQLRow = 0;
                 while (q != null)
                 {
                     lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," 
                     + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
                     lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
                     q = q.Siguiente;
-                    SQLRow++;
                 }
             }
         }

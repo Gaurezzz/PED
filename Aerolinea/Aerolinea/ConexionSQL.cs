@@ -135,7 +135,6 @@ namespace Aerolinea
                 conn.Close();
             }
         }
-
         //Comprueba si existe un vertice con el mismo nombre en la base de datos
         public bool ExisteVertice(string Nombre)
         {
@@ -169,50 +168,6 @@ namespace Aerolinea
             }
             dr.Close();
             return true;
-        }
-        //Eliminar vertice
-        public void EliminarVertice(string NombreVertice)
-        {
-            try
-            {
-                conn.Close();
-                conn.Open();
-                if (ExisteVertice(NombreVertice))
-                {
-                    string eliminarVertice;
-                    eliminarVertice = "DELETE FROM Vertices WHERE Nombre = @Nombre";
-                    command = new SqlCommand(eliminarVertice, conn);
-                    command.Parameters.AddWithValue("@Nombre", NombreVertice);
-                    int affRows = command.ExecuteNonQuery();
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error SQL");
-            }
-        }
-        //Eliminar arista
-        public void EliminarArista(string NombreArista)
-        {
-            try
-            {
-                conn.Close();
-                conn.Open();
-                if (ExisteArista(NombreArista))
-                {
-                    string eliminarArista;
-                    eliminarArista = "DELETE FROM Aristas WHERE Nombre = @Nombre";
-                    command = new SqlCommand(eliminarArista, conn);
-                    command.Parameters.AddWithValue("@Nombre", NombreArista);
-                    int affRows = command.ExecuteNonQuery();
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error SQL");
-            }
         }
         //Devuelve todos los vertices almacenados en la base de datos en una lista
         public List<Nodo> GetNodos()
@@ -316,6 +271,50 @@ namespace Aerolinea
             command = new SqlCommand("EXEC EliminarNodos", conn);
             command.ExecuteNonQuery();
             conn.Close();
+        }
+        //Eliminar vertice actualmente no utilizado
+        public void EliminarVertice(string NombreVertice)
+        {
+            try
+            {
+                conn.Close();
+                conn.Open();
+                if (ExisteVertice(NombreVertice))
+                {
+                    string eliminarVertice;
+                    eliminarVertice = "DELETE FROM Vertices WHERE Nombre = @Nombre";
+                    command = new SqlCommand(eliminarVertice, conn);
+                    command.Parameters.AddWithValue("@Nombre", NombreVertice);
+                    int affRows = command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error SQL");
+            }
+        }
+        //Eliminar arista actualmente no utilizado
+        public void EliminarArista(string NombreArista)
+        {
+            try
+            {
+                conn.Close();
+                conn.Open();
+                if (ExisteArista(NombreArista))
+                {
+                    string eliminarArista;
+                    eliminarArista = "DELETE FROM Aristas WHERE Nombre = @Nombre";
+                    command = new SqlCommand(eliminarArista, conn);
+                    command.Parameters.AddWithValue("@Nombre", NombreArista);
+                    int affRows = command.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error SQL");
+            }
         }
     }
 }
