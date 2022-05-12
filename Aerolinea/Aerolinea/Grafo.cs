@@ -528,7 +528,7 @@ namespace Aerolinea
             {
                 tabla[n, 0] = 0;
                 tabla[n, 1] = int.MaxValue;
-                tabla[n, 2] = 0;
+                tabla[n, 2] = -1;
             }
             tabla[inicio, 1] = 0;
 
@@ -539,6 +539,7 @@ namespace Aerolinea
             {
                 //Marcar nodo como visitado
                 tabla[actual, 0] = 1;
+
                 for (columna = 0; columna < cantNodos; columna++)
                 {
 
@@ -578,7 +579,7 @@ namespace Aerolinea
             int nodo = final;
             while (nodo != inicio)
             {
-                if (nodo == 0) break;
+                if (nodo == -1) break;
                 ruta.Add(nodo);
                 nodo = tabla[nodo, 2];
             }
