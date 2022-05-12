@@ -417,13 +417,9 @@ namespace Aerolinea
                 int SQLRow = 0;
                 while (q != null)
                 {
-<<<<<<< HEAD
                     lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," 
                     + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
-                    ConexionSQL.AgregarArista(q, SQLRow);
-=======
                     lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
->>>>>>> 9be346a3cb68f5c49d530be551538c188d30000d
                     q = q.Siguiente;
                     SQLRow++;
                 }
