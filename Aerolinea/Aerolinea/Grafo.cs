@@ -19,14 +19,15 @@ namespace Aerolinea
         private int Na; //Numero de aristas
 
         //SQL
-        ConexionSQL ConexionSQL=new ConexionSQL();
+        ConexionSQL conexionSQL = new ConexionSQL();
 
         //Constructor
         public Grafo()
         {
             Anular();
         }
-        
+
+
         //Metodo para anular los vertices y aristas
         public void Anular()
         {
@@ -138,7 +139,6 @@ namespace Aerolinea
                     V_final = nuevo;
                 }
                 Nv++;
-                //ConexionSQL.AgregarNodo(nuevo);
             }
         }
 
@@ -314,7 +314,6 @@ namespace Aerolinea
             }
             if (encontrado == true)
                 Nv--;
-            ConexionSQL.EliminarVertice(v.Nombre);
         }
 
         //Metodo para eliminar una arista dado su nombre
@@ -350,7 +349,6 @@ namespace Aerolinea
                 if (encontrado == true)
                     Na--;
             }
-            ConexionSQL.EliminarArista(a.Nombre);
         }
 
 
@@ -402,7 +400,6 @@ namespace Aerolinea
                 while (q != null)
                 {
                     lbxComponentes.Items.Add("*Vertice: " + q.Nombre + "\t Pos(x): " + q.PosX + "\t Pos(y): " + q.PosY);
-                    ConexionSQL.AgregarVertice(q, SQLRow);
                     q = q.Siguiente;
                     SQLRow++;
                 }
@@ -420,9 +417,13 @@ namespace Aerolinea
                 int SQLRow = 0;
                 while (q != null)
                 {
+<<<<<<< HEAD
                     lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," 
                     + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
                     ConexionSQL.AgregarArista(q, SQLRow);
+=======
+                    lbxComponentes.Items.Add("*Arista: " + q.Nombre + "\t {" + q.VerticeAntecesor.Nombre + "," + q.VerticeAdyacente.Nombre + "}" + "\t Peso{" + q.Peso + "}");
+>>>>>>> 9be346a3cb68f5c49d530be551538c188d30000d
                     q = q.Siguiente;
                     SQLRow++;
                 }
@@ -607,20 +608,51 @@ namespace Aerolinea
         public List<Nodo> SQLVEntry()
         {
             List<Nodo> nodos = new List<Nodo>();
-            nodos = ConexionSQL.GetNodos();
+            nodos = conexionSQL.GetNodos();
             return nodos;
-            /*for (int i = 0; i < nodos.Count; i++)
-            {
-                InsertarVertice(nodos[i]);
-            }
-            Vertices = nodos.Count;*/
         }
 
         public List<Nodo> SQLAEntry()
         {
             List<Nodo> aristas=new List<Nodo>();
-            aristas = ConexionSQL.GetAristas();
+            aristas = conexionSQL.GetAristas();
             return aristas;
+        }
+
+        public bool GuardarDatosSQL()
+        {
+            try
+            {
+                conexionSQL.LimpiarSQL();
+                if (hayVertices() == true)
+                {
+                    Nodo q = V_inicial;
+                    int SQLRow = 0;
+                    while (q != null)
+                    {
+                        conexionSQL.AgregarVertice(q, SQLRow);
+                        q = q.Siguiente;
+                        SQLRow++;
+                    }
+                }
+                if (hayAristas() == true)
+                {
+                    Nodo q = A_inicial;
+                    int SQLRow = 0;
+                    while (q != null)
+                    {
+                        conexionSQL.AgregarArista(q, SQLRow);
+                        q = q.Siguiente;
+                        SQLRow++;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Guardando Datos en SQL");
+                return false;
+            }
         }
     }
 }

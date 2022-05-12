@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnASQL = new System.Windows.Forms.Button();
             this.lblLocalizacion = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.pnlEntrada = new System.Windows.Forms.Panel();
@@ -46,7 +45,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnASQL);
             this.panel1.Controls.Add(this.lblLocalizacion);
             this.panel1.Controls.Add(this.pnlDibujo);
             this.panel1.Controls.Add(this.pnlEntrada);
@@ -54,16 +52,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 457);
             this.panel1.TabIndex = 4;
-            // 
-            // btnASQL
-            // 
-            this.btnASQL.Location = new System.Drawing.Point(649, 157);
-            this.btnASQL.Name = "btnASQL";
-            this.btnASQL.Size = new System.Drawing.Size(75, 23);
-            this.btnASQL.TabIndex = 9;
-            this.btnASQL.Text = "IniciarSQL";
-            this.btnASQL.UseVisualStyleBackColor = true;
-            this.btnASQL.Click += new System.EventHandler(this.btnASQL_Click);
             // 
             // lblLocalizacion
             // 
@@ -158,6 +146,5 @@
         private System.Windows.Forms.PictureBox btnUbicar;
         private System.Windows.Forms.Label lblLocalizacion;
         public System.Windows.Forms.PictureBox pnlDibujo;
-        private System.Windows.Forms.Button btnASQL;
     }
 }

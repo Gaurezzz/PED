@@ -21,14 +21,6 @@ namespace Aerolinea
         private bool estado;
         public bool Estado { get { return estado; } }
 
-        //Struct que contiene las variables de la tabla Clientes
-        public struct Cliente
-        {
-            public string DUI;
-            public string Nombre;
-            public string Apellido;
-            public string Edad;
-        }
         //Metodo que conecta con la base de datos
         public ConexionSQL()
         {
@@ -53,12 +45,12 @@ namespace Aerolinea
                 estado = false;
             }
         }
+        //Agrega un vertice a la base de datos
         public void AgregarVertice(Nodo nodo,int SQLRow)
         {
             try
             {
                 bool añadido=false;
-
                 while (añadido!=true)
                 {
                     conn.Close();
@@ -82,9 +74,9 @@ namespace Aerolinea
                     }
                     else
                     {
-                        string eliminarCliente;
-                        eliminarCliente = "DELETE FROM Vertices WHERE Nombre = @Nombre";
-                        command = new SqlCommand(eliminarCliente, conn);
+                        string eliminarVertice;
+                        eliminarVertice = "DELETE FROM Vertices WHERE Nombre = @Nombre";
+                        command = new SqlCommand(eliminarVertice, conn);
                         command.Parameters.AddWithValue("@Nombre", nodo.Nombre);
                         int affRows = command.ExecuteNonQuery();
                     }
@@ -96,6 +88,7 @@ namespace Aerolinea
                 conn.Close();
             }
         }
+        //Agrega una arista a la base de datos
         public void AgregarArista(Nodo arista,int SQLRow)
         {
             try
@@ -127,9 +120,9 @@ namespace Aerolinea
                     }
                     else
                     {
-                        string eliminarCliente;
-                        eliminarCliente = "DELETE FROM Aristas WHERE Nombre = @Nombre";
-                        command = new SqlCommand(eliminarCliente, conn);
+                        string eliminarArista;
+                        eliminarArista = "DELETE FROM Aristas WHERE Nombre = @Nombre";
+                        command = new SqlCommand(eliminarArista, conn);
                         command.Parameters.AddWithValue("@Nombre", arista.Nombre);
                         int affRows = command.ExecuteNonQuery();
                     }
@@ -142,6 +135,7 @@ namespace Aerolinea
                 conn.Close();
             }
         }
+
         //Comprueba si existe un vertice con el mismo nombre en la base de datos
         public bool ExisteVertice(string Nombre)
         {
@@ -185,9 +179,9 @@ namespace Aerolinea
                 conn.Open();
                 if (ExisteVertice(NombreVertice))
                 {
-                    string eliminarCliente;
-                    eliminarCliente = "DELETE FROM Vertices WHERE Nombre = @Nombre";
-                    command = new SqlCommand(eliminarCliente, conn);
+                    string eliminarVertice;
+                    eliminarVertice = "DELETE FROM Vertices WHERE Nombre = @Nombre";
+                    command = new SqlCommand(eliminarVertice, conn);
                     command.Parameters.AddWithValue("@Nombre", NombreVertice);
                     int affRows = command.ExecuteNonQuery();
                     conn.Close();
@@ -207,9 +201,9 @@ namespace Aerolinea
                 conn.Open();
                 if (ExisteArista(NombreArista))
                 {
-                    string eliminarCliente;
-                    eliminarCliente = "DELETE FROM Aristas WHERE Nombre = @Nombre";
-                    command = new SqlCommand(eliminarCliente, conn);
+                    string eliminarArista;
+                    eliminarArista = "DELETE FROM Aristas WHERE Nombre = @Nombre";
+                    command = new SqlCommand(eliminarArista, conn);
                     command.Parameters.AddWithValue("@Nombre", NombreArista);
                     int affRows = command.ExecuteNonQuery();
                     conn.Close();
@@ -220,36 +214,7 @@ namespace Aerolinea
                 MessageBox.Show(ex.Message, "Error SQL");
             }
         }
-
-        public void ModificarCliente(Cliente cliente)
-        {
-            try
-            {
-                string modificarCliente;
-                modificarCliente = "UPDATE Clientes SET Nombre = @Nombre, Apellido = @Apellido, Edad = @Edad WHERE DUI = @DUI";
-                command = new SqlCommand(modificarCliente, conn);
-                command.Parameters.Add(new SqlParameter("@DUI", SqlDbType.VarChar));
-                command.Parameters["@DUI"].Value = cliente.DUI;
-                command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
-                command.Parameters["@Nombre"].Value = cliente.Nombre;
-                command.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
-                command.Parameters["@Apellido"].Value = cliente.Apellido;
-                command.Parameters.Add(new SqlParameter("@Edad", SqlDbType.VarChar));
-                command.Parameters["@Edad"].Value = cliente.Edad;
-                int affRow = command.ExecuteNonQuery();
-
-                if (affRow > 0)
-                    MessageBox.Show("Modificacion realizada con exito", "Modificar Cliente");
-                else
-                    MessageBox.Show("Cambios no realizados", "Modificar Cliente");
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-                conn.Close();
-            }
-        }
+        //Devuelve todos los vertices almacenados en la base de datos en una lista
         public List<Nodo> GetNodos()
         {
             try
@@ -295,6 +260,7 @@ namespace Aerolinea
                 return null;
             }
         }
+        //Devuelve todas las aristas almacenadas en la base de datos en una lista
         public List<Nodo> GetAristas()
         {
             try
@@ -342,15 +308,14 @@ namespace Aerolinea
                 return null;
             }
         }
-        public DataTable MostrarClientes()
+        //Elimina Vertices y Aristas antiguas guardas en la base de datos
+        public void LimpiarSQL()
         {
-            string mostrarClientes;
-            mostrarClientes = "SELECT * FROM Clientes";
-            da = new SqlDataAdapter(mostrarClientes, conn);
-            da.SelectCommand.CommandType = CommandType.Text;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            return dt;
+            conn.Close();
+            conn.Open();
+            command = new SqlCommand("EXEC EliminarNodos", conn);
+            command.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Aerolinea
@@ -176,7 +177,7 @@ namespace Aerolinea
                     arista.VerticeAdyacente = final;
                     arista.Nombre = "arista" + nArista.ToString();
 
-                    nArista++;
+                    nArista = int.Parse(Regex.Replace(aristas[i].Nombre, @"[^\d]", "")) + 1;
 
 
                     arista.Peso = aristas[i].Peso;
@@ -194,11 +195,6 @@ namespace Aerolinea
             {
                 MessageBox.Show("El costo debe ser un numero entero positivo", "Error");
             }
-        }
-
-        private void btnASQL_Click(object sender, EventArgs e)
-        {
-            SQLIniciar();
         }
     }
 }

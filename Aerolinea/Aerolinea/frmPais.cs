@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 //sdvsdvs
@@ -179,9 +180,18 @@ namespace Aerolinea
                     vertice.Tamaño = 5;
                     if (!obj.ExisteV(vertice))
                     {
-                        contadorlblV += 1;
-                        txtPais.Text = "";
-                        txtPais.Text = "Vertice" + contadorlblV;
+                        if (nodos.Count-1==i)
+                        {
+                            contadorlblV = int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) + 1;
+                            txtPais.Text = "";
+                            txtPais.Text = "Vertice" + contadorlblV;
+                        }
+                        else
+                        {
+                            contadorlblV += 1;
+                            txtPais.Text = "";
+                            txtPais.Text = "Vertice" + contadorlblV;
+                        }
                     }
                     obj.InsertarVertice(vertice);
                     lblvertices.Text = "VERTICES: " + contadorlblV;
@@ -196,11 +206,6 @@ namespace Aerolinea
                     "3.- La posición Y es un número entero positivo (máximo 339)\n", "ERROR", MessageBoxButtons.OK);
             }
             actualizarMapa();
-        }
-
-        private void btnIniciarSQL_Click(object sender, EventArgs e)
-        {
-            SQLInicio();
         }
     }
 }

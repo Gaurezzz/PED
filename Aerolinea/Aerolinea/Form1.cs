@@ -63,6 +63,8 @@ namespace Aerolinea
             frmRegistro.panel1.Location = new Point(panx, pany);
 
             this.ActiveControl = frmPais.lblprueba;
+
+            SQLWaitTime.Enabled = true;
         }
 
         //Aqui se configura la barra superior para permitirle ser arrastrada
@@ -343,6 +345,18 @@ namespace Aerolinea
         private void pnlBarra_Click(object sender, EventArgs e)
         {
             this.ActiveControl = pnlBarra;
+        }
+
+        private void SQLWaitTime_Tick(object sender, EventArgs e)
+        {
+            frmPais.SQLInicio();
+            frmVuelo.SQLIniciar();
+            SQLWaitTime.Enabled = false;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            obj.GuardarDatosSQL();
         }
     }
 }

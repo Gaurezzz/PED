@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnIniciarSQL = new System.Windows.Forms.Button();
             this.lblLocalizacion = new System.Windows.Forms.Label();
             this.lblvertices = new System.Windows.Forms.Label();
             this.pnlDibujo = new System.Windows.Forms.PictureBox();
             this.lblprueba = new System.Windows.Forms.Label();
             this.pnlEntrada = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPais = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDibujo)).BeginInit();
             this.pnlEntrada.SuspendLayout();
@@ -47,7 +46,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnIniciarSQL);
             this.panel1.Controls.Add(this.lblLocalizacion);
             this.panel1.Controls.Add(this.lblvertices);
             this.panel1.Controls.Add(this.pnlDibujo);
@@ -57,16 +55,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 457);
             this.panel1.TabIndex = 3;
-            // 
-            // btnIniciarSQL
-            // 
-            this.btnIniciarSQL.Location = new System.Drawing.Point(649, 161);
-            this.btnIniciarSQL.Name = "btnIniciarSQL";
-            this.btnIniciarSQL.Size = new System.Drawing.Size(75, 23);
-            this.btnIniciarSQL.TabIndex = 11;
-            this.btnIniciarSQL.Text = "IniciarSQL";
-            this.btnIniciarSQL.UseVisualStyleBackColor = true;
-            this.btnIniciarSQL.Click += new System.EventHandler(this.btnIniciarSQL_Click);
             // 
             // lblLocalizacion
             // 
@@ -117,6 +105,17 @@
             this.pnlEntrada.Size = new System.Drawing.Size(749, 118);
             this.pnlEntrada.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(165, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(401, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ingrese el nombre del pais o ciudad que desea agregar:";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -138,17 +137,6 @@
             this.txtPais.TabIndex = 0;
             this.txtPais.Text = "Introduzca el nombre del país a agregar";
             this.txtPais.Enter += new System.EventHandler(this.txtPais_Enter);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(165, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(401, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ingrese el nombre del pais o ciudad que desea agregar:";
             // 
             // frmPais
             // 
@@ -177,7 +165,6 @@
         public System.Windows.Forms.PictureBox pnlDibujo;
         private System.Windows.Forms.Label lblvertices;
         private System.Windows.Forms.Label lblLocalizacion;
-        private System.Windows.Forms.Button btnIniciarSQL;
         private System.Windows.Forms.Label label1;
     }
 }
