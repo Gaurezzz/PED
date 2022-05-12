@@ -159,5 +159,46 @@ namespace Aerolinea
             lblLocalizacion.Text = ("X: " + e.X + " , Y: " + e.Y);  //definimos la ubicacion del string
         }
 
+        public void SQLIniciar()
+        {
+
+            try
+            {
+                List<Nodo> aristas = obj.SQLAEntry();
+                for (int i = 0; i < aristas.Count; i++)
+                {
+                    Nodo inicio = obj.LocalizaVertice(aristas[i].VerticeAntecesor.Nombre);
+                    Nodo final = obj.LocalizaVertice(aristas[i].VerticeAdyacente.Nombre);
+
+                    Nodo arista = new Nodo();
+
+                    arista.VerticeAntecesor = inicio;
+                    arista.VerticeAdyacente = final;
+                    arista.Nombre = "arista" + nArista.ToString();
+
+                    nArista++;
+
+
+                    arista.Peso = aristas[i].Peso;
+
+                    obj.InsertarArista(arista, inicio, final); //Introducimos las aristas en el grafo
+
+                    actualizarMapa();
+                }
+
+                cmbNodo1.Text = "";
+                cmbNodo2.Text = "";
+                txtCosto.Text = "";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("El costo debe ser un numero entero positivo", "Error");
+            }
+        }
+
+        private void btnASQL_Click(object sender, EventArgs e)
+        {
+            SQLIniciar();
+        }
     }
 }

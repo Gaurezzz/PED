@@ -602,7 +602,7 @@ namespace Aerolinea
             }
         }
 
-        public List<Nodo> SQLVAEntry()
+        public List<Nodo> SQLVEntry()
         {
             List<Nodo> nodos = new List<Nodo>();
             nodos = ConexionSQL.GetNodos();
@@ -612,6 +612,13 @@ namespace Aerolinea
                 InsertarVertice(nodos[i]);
             }
             Vertices = nodos.Count;*/
+        }
+
+        public List<Nodo> SQLAEntry()
+        {
+            List<Nodo> aristas=new List<Nodo>();
+            aristas = ConexionSQL.GetAristas();
+            return aristas;
         }
     }
 }
