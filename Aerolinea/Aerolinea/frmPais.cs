@@ -171,39 +171,42 @@ namespace Aerolinea
             try
             {
                 List<Nodo> nodos = obj.SQLVEntry();
-                for (int i = 0; i < nodos.Count; i++)
+                if (nodos != null)
                 {
-                    Nodo vertice = new Nodo();
-                    vertice = nodos[i];
-                    vertice.ColorNodo = "black";
-                    vertice.Grosor = 3;
-                    vertice.Tamaño = 5;
-                    if (!obj.ExisteV(vertice))
+                    for (int i = 0; i < nodos.Count; i++)
                     {
-                        try
+                        Nodo vertice = new Nodo();
+                        vertice = nodos[i];
+                        vertice.ColorNodo = "black";
+                        vertice.Grosor = 3;
+                        vertice.Tamaño = 5;
+                        if (!obj.ExisteV(vertice))
                         {
-                            if (nodos.Count - 1 == i && int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) > nodos.Count)
+                            try
                             {
-                                contadorlblV = int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) + 1;
-                                txtPais.Text = "";
-                                txtPais.Text = "Vertice" + contadorlblV;
+                                if (nodos.Count - 1 == i && int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) > nodos.Count)
+                                {
+                                    contadorlblV = int.Parse(Regex.Replace(nodos[i].Nombre, @"[^\d]", "")) + 1;
+                                    txtPais.Text = "";
+                                    txtPais.Text = "Vertice" + contadorlblV;
+                                }
+                                else
+                                {
+                                    contadorlblV = nodos.Count;
+                                    txtPais.Text = "";
+                                    txtPais.Text = "Vertice" + contadorlblV;
+                                }
                             }
-                            else
+                            catch
                             {
                                 contadorlblV = nodos.Count;
                                 txtPais.Text = "";
                                 txtPais.Text = "Vertice" + contadorlblV;
                             }
                         }
-                        catch
-                        {
-                            contadorlblV = nodos.Count;
-                            txtPais.Text = "";
-                            txtPais.Text = "Vertice" + contadorlblV;
-                        }
+                        obj.InsertarVertice(vertice);
+                        lblvertices.Text = "VERTICES: " + contadorlblV;
                     }
-                    obj.InsertarVertice(vertice);
-                    lblvertices.Text = "VERTICES: " + contadorlblV;
                 }
             }
             catch

@@ -166,30 +166,33 @@ namespace Aerolinea
             try
             {
                 List<Nodo> aristas = obj.SQLAEntry();
-                for (int i = 0; i < aristas.Count; i++)
+                if (aristas!=null)
                 {
-                    Nodo inicio = obj.LocalizaVertice(aristas[i].VerticeAntecesor.Nombre);
-                    Nodo final = obj.LocalizaVertice(aristas[i].VerticeAdyacente.Nombre);
+                    for (int i = 0; i < aristas.Count; i++)
+                    {
+                        Nodo inicio = obj.LocalizaVertice(aristas[i].VerticeAntecesor.Nombre);
+                        Nodo final = obj.LocalizaVertice(aristas[i].VerticeAdyacente.Nombre);
 
-                    Nodo arista = new Nodo();
+                        Nodo arista = new Nodo();
 
-                    arista.VerticeAntecesor = inicio;
-                    arista.VerticeAdyacente = final;
-                    arista.Nombre = "arista" + nArista.ToString();
+                        arista.VerticeAntecesor = inicio;
+                        arista.VerticeAdyacente = final;
+                        arista.Nombre = "arista" + nArista.ToString();
 
-                    nArista = int.Parse(Regex.Replace(aristas[i].Nombre, @"[^\d]", "")) + 1;
+                        nArista = int.Parse(Regex.Replace(aristas[i].Nombre, @"[^\d]", "")) + 1;
 
 
-                    arista.Peso = aristas[i].Peso;
+                        arista.Peso = aristas[i].Peso;
 
-                    obj.InsertarArista(arista, inicio, final); //Introducimos las aristas en el grafo
+                        obj.InsertarArista(arista, inicio, final); //Introducimos las aristas en el grafo
 
-                    actualizarMapa();
+                        actualizarMapa();
+                    }
+
+                    cmbNodo1.Text = "";
+                    cmbNodo2.Text = "";
+                    txtCosto.Text = "";
                 }
-
-                cmbNodo1.Text = "";
-                cmbNodo2.Text = "";
-                txtCosto.Text = "";
             }
             catch (Exception)
             {

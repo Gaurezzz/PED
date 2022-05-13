@@ -50,35 +50,38 @@ namespace Aerolinea
         {
             try
             {
-                bool añadido=false;
-                while (añadido!=true)
+                if (estado==true)
                 {
-                    conn.Close();
-                    conn.Open();
-                    if (!ExisteVertice(nodo.Nombre))
+                    bool añadido=false;
+                    while (añadido!=true)
                     {
-                        string insertarNodo;
-                        insertarNodo = "INSERT INTO Vertices(Fila,Nombre,posX,posY)";
-                        insertarNodo += "VALUES(@Fila,@Nombre,@posX,@posY)";
-                        command = new SqlCommand(insertarNodo, conn);
-                        command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
-                        command.Parameters["@Fila"].Value = SQLRow;
-                        command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
-                        command.Parameters["@Nombre"].Value = nodo.Nombre;
-                        command.Parameters.Add(new SqlParameter("@posX", SqlDbType.Int));
-                        command.Parameters["@posX"].Value = nodo.PosX;
-                        command.Parameters.Add(new SqlParameter("@posY", SqlDbType.Int));
-                        command.Parameters["@posY"].Value = nodo.PosY;
-                        command.ExecuteNonQuery();
-                        añadido = true;
-                    }
-                    else
-                    {
-                        string eliminarVertice;
-                        eliminarVertice = "DELETE FROM Vertices WHERE Nombre = @Nombre";
-                        command = new SqlCommand(eliminarVertice, conn);
-                        command.Parameters.AddWithValue("@Nombre", nodo.Nombre);
-                        int affRows = command.ExecuteNonQuery();
+                        conn.Close();
+                        conn.Open();
+                        if (!ExisteVertice(nodo.Nombre))
+                        {
+                            string insertarNodo;
+                            insertarNodo = "INSERT INTO Vertices(Fila,Nombre,posX,posY)";
+                            insertarNodo += "VALUES(@Fila,@Nombre,@posX,@posY)";
+                            command = new SqlCommand(insertarNodo, conn);
+                            command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                            command.Parameters["@Fila"].Value = SQLRow;
+                            command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                            command.Parameters["@Nombre"].Value = nodo.Nombre;
+                            command.Parameters.Add(new SqlParameter("@posX", SqlDbType.Int));
+                            command.Parameters["@posX"].Value = nodo.PosX;
+                            command.Parameters.Add(new SqlParameter("@posY", SqlDbType.Int));
+                            command.Parameters["@posY"].Value = nodo.PosY;
+                            command.ExecuteNonQuery();
+                            añadido = true;
+                        }
+                        else
+                        {
+                            string eliminarVertice;
+                            eliminarVertice = "DELETE FROM Vertices WHERE Nombre = @Nombre";
+                            command = new SqlCommand(eliminarVertice, conn);
+                            command.Parameters.AddWithValue("@Nombre", nodo.Nombre);
+                            int affRows = command.ExecuteNonQuery();
+                        }
                     }
                 }
             }
@@ -93,38 +96,41 @@ namespace Aerolinea
         {
             try
             {
-                bool añadido = false;
-
-                while (añadido != true)
+                if (estado==true)
                 {
-                    conn.Close();
-                    conn.Open();
-                    if (!ExisteArista(arista.Nombre))
+                    bool añadido = false;
+
+                    while (añadido != true)
                     {
-                        string insertarNodo;
-                        insertarNodo = "INSERT INTO Aristas(Fila,Nombre,peso,VerticeAntecesor,VerticeAdyacente)";
-                        insertarNodo += "VALUES(@Fila,@Nombre,@peso,@VerticeAntecesor,@VerticeAdyacente)";
-                        command = new SqlCommand(insertarNodo, conn);
-                        command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
-                        command.Parameters["@Fila"].Value = SQLRow;
-                        command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
-                        command.Parameters["@Nombre"].Value = arista.Nombre;
-                        command.Parameters.Add(new SqlParameter("@peso", SqlDbType.Int));
-                        command.Parameters["@peso"].Value = arista.Peso;
-                        command.Parameters.Add(new SqlParameter("@VerticeAntecesor", SqlDbType.VarChar));
-                        command.Parameters["@VerticeAntecesor"].Value = arista.VerticeAntecesor.Nombre;
-                        command.Parameters.Add(new SqlParameter("@VerticeAdyacente", SqlDbType.VarChar));
-                        command.Parameters["@VerticeAdyacente"].Value = arista.VerticeAdyacente.Nombre;
-                        command.ExecuteNonQuery();
-                        añadido = true;
-                    }
-                    else
-                    {
-                        string eliminarArista;
-                        eliminarArista = "DELETE FROM Aristas WHERE Nombre = @Nombre";
-                        command = new SqlCommand(eliminarArista, conn);
-                        command.Parameters.AddWithValue("@Nombre", arista.Nombre);
-                        int affRows = command.ExecuteNonQuery();
+                        conn.Close();
+                        conn.Open();
+                        if (!ExisteArista(arista.Nombre))
+                        {
+                            string insertarNodo;
+                            insertarNodo = "INSERT INTO Aristas(Fila,Nombre,peso,VerticeAntecesor,VerticeAdyacente)";
+                            insertarNodo += "VALUES(@Fila,@Nombre,@peso,@VerticeAntecesor,@VerticeAdyacente)";
+                            command = new SqlCommand(insertarNodo, conn);
+                            command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                            command.Parameters["@Fila"].Value = SQLRow;
+                            command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                            command.Parameters["@Nombre"].Value = arista.Nombre;
+                            command.Parameters.Add(new SqlParameter("@peso", SqlDbType.Int));
+                            command.Parameters["@peso"].Value = arista.Peso;
+                            command.Parameters.Add(new SqlParameter("@VerticeAntecesor", SqlDbType.VarChar));
+                            command.Parameters["@VerticeAntecesor"].Value = arista.VerticeAntecesor.Nombre;
+                            command.Parameters.Add(new SqlParameter("@VerticeAdyacente", SqlDbType.VarChar));
+                            command.Parameters["@VerticeAdyacente"].Value = arista.VerticeAdyacente.Nombre;
+                            command.ExecuteNonQuery();
+                            añadido = true;
+                        }
+                        else
+                        {
+                            string eliminarArista;
+                            eliminarArista = "DELETE FROM Aristas WHERE Nombre = @Nombre";
+                            command = new SqlCommand(eliminarArista, conn);
+                            command.Parameters.AddWithValue("@Nombre", arista.Nombre);
+                            int affRows = command.ExecuteNonQuery();
+                        }
                     }
                 }
                 
@@ -174,38 +180,43 @@ namespace Aerolinea
         {
             try
             {
-                conn.Close();
-                conn.Open();
-                command = new SqlCommand("SELECT COUNT(*) FROM Vertices", conn);
-                Int32 count = (Int32)command.ExecuteScalar();
-                List<Nodo> nodos = new List<Nodo>();
-                for (int i = 0; i < count; i++)
+                if (estado == true)
                 {
                     conn.Close();
                     conn.Open();
-                    Nodo nodo = new Nodo();
-                    string buscarVertice;
-                    buscarVertice = "SELECT Fila,Nombre,posX,posY FROM Vertices WHERE Fila = @Fila";
-                    command = new SqlCommand(buscarVertice, conn);
-                    command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
-                    command.Parameters["@Fila"].Value = i;
-                    dr = command.ExecuteReader();
-                    if (dr.Read())
+                    command = new SqlCommand("SELECT COUNT(*) FROM Vertices", conn);
+                    Int32 count = (Int32)command.ExecuteScalar();
+                    List<Nodo> nodos = new List<Nodo>();
+                    for (int i = 0; i < count; i++)
                     {
+                        conn.Close();
+                        conn.Open();
+                        Nodo nodo = new Nodo();
+                        string buscarVertice;
+                        buscarVertice = "SELECT Fila,Nombre,posX,posY FROM Vertices WHERE Fila = @Fila";
+                        command = new SqlCommand(buscarVertice, conn);
+                        command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                        command.Parameters["@Fila"].Value = i;
+                        dr = command.ExecuteReader();
+                        if (dr.Read())
+                        {
 
-                        nodo.Nombre = dr["Nombre"].ToString();
-                        nodo.PosX = int.Parse(dr["posX"].ToString());
-                        nodo.PosY = int.Parse(dr["posY"].ToString());
-                        nodo.ColorNodo = "black";
-                        nodo.Grosor = 3;
-                        nodo.Tamaño = 5;
-                        nodos.Add(nodo);
+                            nodo.Nombre = dr["Nombre"].ToString();
+                            nodo.PosX = int.Parse(dr["posX"].ToString());
+                            nodo.PosY = int.Parse(dr["posY"].ToString());
+                            nodo.ColorNodo = "black";
+                            nodo.Grosor = 3;
+                            nodo.Tamaño = 5;
+                            nodos.Add(nodo);
+                            dr.Close();
+                        }
                         dr.Close();
                     }
-                    dr.Close();
+                    conn.Close();
+                    return nodos;
                 }
-                conn.Close();
-                return nodos;
+                else
+                    return null;
             }
             catch (Exception ex)
             {
@@ -220,40 +231,45 @@ namespace Aerolinea
         {
             try
             {
-                conn.Close();
-                conn.Open();
-                command = new SqlCommand("SELECT COUNT(*) FROM Aristas", conn);
-                Int32 count = (Int32)command.ExecuteScalar();
-                List<Nodo> nodos = new List<Nodo>();
-                for (int i = 0; i < count; i++)
+                if (estado == true)
                 {
                     conn.Close();
                     conn.Open();
-                    Nodo nodo = new Nodo();
-                    string buscarVertice;
-                    buscarVertice = "SELECT Fila,Nombre,Peso,VerticeAntecesor,VerticeAdyacente FROM Aristas WHERE Fila = @Fila";
-                    command = new SqlCommand(buscarVertice, conn);
-                    command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
-                    command.Parameters["@Fila"].Value = i;
-                    dr = command.ExecuteReader();
-                    if (dr.Read())
+                    command = new SqlCommand("SELECT COUNT(*) FROM Aristas", conn);
+                    Int32 count = (Int32)command.ExecuteScalar();
+                    List<Nodo> nodos = new List<Nodo>();
+                    for (int i = 0; i < count; i++)
                     {
+                        conn.Close();
+                        conn.Open();
+                        Nodo nodo = new Nodo();
+                        string buscarVertice;
+                        buscarVertice = "SELECT Fila,Nombre,Peso,VerticeAntecesor,VerticeAdyacente FROM Aristas WHERE Fila = @Fila";
+                        command = new SqlCommand(buscarVertice, conn);
+                        command.Parameters.Add(new SqlParameter("@Fila", SqlDbType.Int));
+                        command.Parameters["@Fila"].Value = i;
+                        dr = command.ExecuteReader();
+                        if (dr.Read())
+                        {
 
-                        nodo.Nombre = dr["Nombre"].ToString();
-                        nodo.Peso = int.Parse(dr["Peso"].ToString());
-                        Nodo verticeantecesor = new Nodo();
-                        verticeantecesor.Nombre = dr["VerticeAntecesor"].ToString();
-                        nodo.VerticeAntecesor = verticeantecesor;
-                        Nodo verticeadyacente = new Nodo();
-                        verticeadyacente.Nombre = dr["VerticeAdyacente"].ToString();
-                        nodo.VerticeAdyacente = verticeadyacente;
-                        nodos.Add(nodo);
+                            nodo.Nombre = dr["Nombre"].ToString();
+                            nodo.Peso = int.Parse(dr["Peso"].ToString());
+                            Nodo verticeantecesor = new Nodo();
+                            verticeantecesor.Nombre = dr["VerticeAntecesor"].ToString();
+                            nodo.VerticeAntecesor = verticeantecesor;
+                            Nodo verticeadyacente = new Nodo();
+                            verticeadyacente.Nombre = dr["VerticeAdyacente"].ToString();
+                            nodo.VerticeAdyacente = verticeadyacente;
+                            nodos.Add(nodo);
+                            dr.Close();
+                        }
                         dr.Close();
                     }
-                    dr.Close();
+                    conn.Close();
+                    return nodos;
                 }
-                conn.Close();
-                return nodos;
+                else
+                    return null;
             }
             catch (Exception ex)
             {
@@ -266,11 +282,14 @@ namespace Aerolinea
         //Elimina Vertices y Aristas antiguas guardas en la base de datos
         public void LimpiarSQL()
         {
-            conn.Close();
-            conn.Open();
-            command = new SqlCommand("EXEC EliminarNodos", conn);
-            command.ExecuteNonQuery();
-            conn.Close();
+            if (estado == true)
+            {
+                conn.Close();
+                conn.Open();
+                command = new SqlCommand("EXEC EliminarNodos", conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
         }
         //Eliminar vertice actualmente no utilizado
         public void EliminarVertice(string NombreVertice)
